@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mjupjt.cxbtixwquuos.ap-northeast-2.rds.amazonaws.com/IdolInsurance
+    username: admin
+    password: q1w2e3r4
