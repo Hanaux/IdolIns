@@ -1,15 +1,18 @@
 package com.mju.IdolIns.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.mju.IdolIns.dto.MemberDto;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping(value = "/idol", method = {RequestMethod.GET, RequestMethod.POST})
 public class MyController {
 
-    @GetMapping("healthCheck")
-    public String healthCheck(){
-        return "Is Alive";
+    @GetMapping("oww")
+    public String customerinfo() {
+
+        return "My name is ";
     }
 }
+
