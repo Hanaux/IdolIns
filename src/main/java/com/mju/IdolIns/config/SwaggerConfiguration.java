@@ -12,13 +12,13 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Configuration
 public class SwaggerConfiguration {
 
-    @Bean
-    public GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder()
-                .group("idol-debut")
-                .pathsToMatch("/idol/**")
-                .build();
-    }
+//    @Bean
+//    public GroupedOpenApi publicApi() {
+//        return GroupedOpenApi.builder()
+//                .group("idol-debut")
+//                .pathsToMatch("/idol/**")
+//                .build();
+//    }
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
@@ -26,5 +26,4 @@ public class SwaggerConfiguration {
                         .description("IdolDebut Group Insurance ERP Project")
                         .version("v0.0.1"));
     }
-
 }
