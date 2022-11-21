@@ -28,11 +28,11 @@ public class CustomerController{
         this.customerService = customerService;
     }
 
-    @GetMapping(value = "/custinfo/{cust_ID}")
+    @GetMapping(value = "/custinfo/{cust-ID}")
     @Operation(summary = "회원정보 조회 메서드", description = "회원정보 조회 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> getCustomer(
-            @Parameter(name = "id", description = "고객 id값")
-            @RequestParam int cust_ID) {
+//            @Parameter(name = "id", description = "고객 id값")
+            @PathVariable("cust-ID") int cust_ID) {
         CustomerResponseDto customerResponseDto = customerService.getCustomer(cust_ID);
 
         return ResponseEntity.status(HttpStatus.OK).body(customerResponseDto);
@@ -46,7 +46,7 @@ public class CustomerController{
         return ResponseEntity.status(HttpStatus.OK).body(customerResponseDto);
     }
 
-    @PutMapping()
+    @PutMapping(value = "/custinfo/modification")
     public ResponseEntity<CustomerResponseDto> changeCustomerName(
         @RequestBody ChangeCustomerNameDto changeCustomerNameDto) throws Exception{
         CustomerResponseDto customerResponseDto = customerService.changeCustomerName(
