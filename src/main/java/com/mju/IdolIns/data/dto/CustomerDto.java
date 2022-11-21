@@ -1,10 +1,12 @@
 package com.mju.IdolIns.data.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder
 public class CustomerDto {
     private String Cust_NM;
     private String SSN;
@@ -12,12 +14,12 @@ public class CustomerDto {
     private String Acc_NM;
     private int Sex;
 
-    public CustomerDto(String custNm, String ssn, String custPn,
-                       String accNm, int sex){
-        this.Cust_NM = custNm;
-        this.SSN = ssn;
-        this.Cust_PN = custPn;
-        this.Acc_NM = accNm;
-        this.Sex = sex;
-    }
+//    public CustomerDto(String custNm, String ssn, String custPn,
+//                       String accNm, int sex){
+//        this.Cust_NM = custNm;
+//        this.SSN = ssn;
+//        this.Cust_PN = custPn;
+//        this.Acc_NM = accNm;
+//        this.Sex = sex;
+//    }
 }

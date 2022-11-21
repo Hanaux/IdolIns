@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 @Tag(name = "고객", description = "고객 정보 관련 api입니다.")
 @RequestMapping("/customer")
@@ -28,12 +30,11 @@ public class CustomerController{
         this.customerService = customerService;
     }
 
-    @GetMapping(value = "/custinfo/{cust-ID}")
+    @GetMapping(value = "/custinfo/{id}")
     @Operation(summary = "회원정보 조회 메서드", description = "회원정보 조회 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> getCustomer(
-//            @Parameter(name = "id", description = "고객 id값")
-            @PathVariable("cust-ID") int cust_ID) {
-        CustomerResponseDto customerResponseDto = customerService.getCustomer(cust_ID);
+            @Parameter @PathVariable int id) {
+        CustomerResponseDto customerResponseDto = customerService.getCustomer(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(customerResponseDto);
     }
@@ -47,6 +48,7 @@ public class CustomerController{
     }
 
     @PutMapping(value = "/custinfo/modification")
+    @Operation(summary = "회원 이름 수정 메서드", description = "회원정보 이름 수정 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> changeCustomerName(
         @RequestBody ChangeCustomerNameDto changeCustomerNameDto) throws Exception{
         CustomerResponseDto customerResponseDto = customerService.changeCustomerName(
@@ -57,9 +59,12 @@ public class CustomerController{
         return ResponseEntity.status(HttpStatus.OK).body(customerResponseDto);
     }
 
-    @DeleteMapping()
-    public ResponseEntity<String> deleteCustomer(int cust_ID) throws Exception{
-        customerService.deleteCustomer(cust_ID);
+    @DeleteMapping(value = "/custinfo/deletion/{id}")
+    @Operation(summary = "회원 정보 삭제 메서드", description = "회원정보 삭제 메서드입니다.")
+    public ResponseEntity<String> deleteCustomer(
+            @Parameter @PathVariable
+            int id) throws Exception{
+        customerService.deleteCustomer(id);
 
         return ResponseEntity.status(HttpStatus.OK).body("DELETE SUCCESSFULLY :)");
     }

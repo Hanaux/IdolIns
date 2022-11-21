@@ -4,6 +4,11 @@ spring:
     url: jdbc:mysql://mjupjt.cxbtixwquuos.ap-northeast-2.rds.amazonaws.com/IdolInsurance
     username: admin
     password: q1w2e3r4
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+      indent-output: true
+
   jpa:
     hibernate:
       ddl-auto: update #create -> update
