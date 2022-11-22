@@ -1,23 +1,16 @@
 package com.mju.IdolIns.controller;
 
-import com.mju.IdolIns.data.dao.CustomerDAO;
-import com.mju.IdolIns.data.dto.ChangeCustomerNameDto;
-import com.mju.IdolIns.data.dto.CustomerDto;
-import com.mju.IdolIns.data.dto.CustomerResponseDto;
+import com.mju.IdolIns.data.dto.customerdto.ChangeCustomerNameDto;
+import com.mju.IdolIns.data.dto.customerdto.CustomerDto;
+import com.mju.IdolIns.data.dto.customerdto.CustomerResponseDto;
 import com.mju.IdolIns.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.websocket.server.PathParam;
 
 @RestController
 @Tag(name = "고객", description = "고객 정보 관련 api입니다.")

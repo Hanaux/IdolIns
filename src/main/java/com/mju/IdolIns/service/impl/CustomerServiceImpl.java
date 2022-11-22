@@ -1,8 +1,8 @@
 package com.mju.IdolIns.service.impl;
 
-import com.mju.IdolIns.data.dao.CustomerDAO;
-import com.mju.IdolIns.data.dto.CustomerDto;
-import com.mju.IdolIns.data.dto.CustomerResponseDto;
+import com.mju.IdolIns.data.dao.CustomerDao;
+import com.mju.IdolIns.data.dto.customerdto.CustomerDto;
+import com.mju.IdolIns.data.dto.customerdto.CustomerResponseDto;
 import com.mju.IdolIns.data.entity.Customer;
 import com.mju.IdolIns.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private final CustomerDAO customerDAO;
+    private final CustomerDao customerDAO;
 
     @Autowired
-    public CustomerServiceImpl(CustomerDAO customerDAO){
+    public CustomerServiceImpl(CustomerDao customerDAO){
         this.customerDAO = customerDAO;
     }
     @Override
