@@ -1,14 +1,9 @@
 package com.mju.IdolIns.service.impl;
 
-import com.mju.IdolIns.data.dao.CustomerDAO;
 import com.mju.IdolIns.data.dao.InsuranceDAO;
-import com.mju.IdolIns.data.dto.CustomerDto;
-import com.mju.IdolIns.data.dto.CustomerResponseDto;
-import com.mju.IdolIns.data.dto.InsuranceDto;
-import com.mju.IdolIns.data.dto.InsuranceResponseDto;
-import com.mju.IdolIns.data.entity.Customer;
+import com.mju.IdolIns.data.dto.insurancedto.InsuranceDto;
+import com.mju.IdolIns.data.dto.insurancedto.InsuranceResponseDto;
 import com.mju.IdolIns.data.entity.Insurance;
-import com.mju.IdolIns.service.CustomerService;
 import com.mju.IdolIns.service.InsuranceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

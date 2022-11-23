@@ -1,6 +1,8 @@
 package com.mju.IdolIns.controller;
 
-import com.mju.IdolIns.data.dto.*;
+import com.mju.IdolIns.data.dto.insurancedto.ChangeInsuranceNameDto;
+import com.mju.IdolIns.data.dto.insurancedto.InsuranceDto;
+import com.mju.IdolIns.data.dto.insurancedto.InsuranceResponseDto;
 import com.mju.IdolIns.service.InsuranceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

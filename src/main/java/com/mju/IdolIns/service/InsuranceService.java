@@ -1,7 +1,7 @@
 package com.mju.IdolIns.service;
 
-import com.mju.IdolIns.data.dto.InsuranceDto;
-import com.mju.IdolIns.data.dto.InsuranceResponseDto;
+import com.mju.IdolIns.data.dto.insurancedto.InsuranceDto;
+import com.mju.IdolIns.data.dto.insurancedto.InsuranceResponseDto;
 
 public interface InsuranceService {
     InsuranceResponseDto getInsurance(int ins_ID);

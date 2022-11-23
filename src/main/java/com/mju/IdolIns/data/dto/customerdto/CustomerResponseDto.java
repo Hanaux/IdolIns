@@ -1,4 +1,4 @@
-package com.mju.IdolIns.data.dto;
+package com.mju.IdolIns.data.dto.customerdto;
 
 import lombok.Getter;
 import lombok.Setter;

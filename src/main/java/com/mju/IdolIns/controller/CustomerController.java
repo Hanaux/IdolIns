@@ -1,8 +1,8 @@
 package com.mju.IdolIns.controller;
 
-import com.mju.IdolIns.data.dto.ChangeCustomerNameDto;
-import com.mju.IdolIns.data.dto.CustomerDto;
-import com.mju.IdolIns.data.dto.CustomerResponseDto;
+import com.mju.IdolIns.data.dto.customerdto.ChangeCustomerNameDto;
+import com.mju.IdolIns.data.dto.customerdto.CustomerDto;
+import com.mju.IdolIns.data.dto.customerdto.CustomerResponseDto;
 import com.mju.IdolIns.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

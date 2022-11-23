@@ -1,7 +1,7 @@
 package com.mju.IdolIns.service;
 
-import com.mju.IdolIns.data.dto.CustomerDto;
-import com.mju.IdolIns.data.dto.CustomerResponseDto;
+import com.mju.IdolIns.data.dto.customerdto.CustomerDto;
+import com.mju.IdolIns.data.dto.customerdto.CustomerResponseDto;
 
 public interface CustomerService {
     CustomerResponseDto getCustomer(int cust_ID);
