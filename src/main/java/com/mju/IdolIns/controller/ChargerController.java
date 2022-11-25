@@ -46,10 +46,7 @@ public class ChargerController {
         @RequestBody ChangeChargerInfoDto changeChargerInfoDto) throws Exception{
         ChargerResponseDto chargerResponseDto = chargerService.changeChargerInfo(
                 changeChargerInfoDto.getAcc_NM(), changeChargerInfoDto.getIns_ID(), changeChargerInfoDto.getLossAmountHuman(),
-                changeChargerInfoDto.getLossAmountProperty(), changeChargerInfoDto.getDecisionCompensationProperty(),
-                changeChargerInfoDto.getDecisionCompensationHuman(), changeChargerInfoDto.getCust_ID(),
-                changeChargerInfoDto.getDoc_ID(), changeChargerInfoDto.getDate(),
-                changeChargerInfoDto.getPaymentReportOK(),changeChargerInfoDto.getPaymentCompleted()
+                changeChargerInfoDto.getLossAmountProperty()
         );
 
         return ResponseEntity.status(HttpStatus.OK).body(chargerResponseDto);
@@ -64,5 +61,6 @@ public class ChargerController {
 
         return ResponseEntity.status(HttpStatus.OK).body("DELETE SUCCESSFULLY :)");
     }
+
 }
 

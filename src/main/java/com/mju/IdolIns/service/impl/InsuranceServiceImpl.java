@@ -88,4 +88,23 @@ public class InsuranceServiceImpl implements InsuranceService {
     public void deleteInsurance(int ins_ID) throws Exception {
         insuranceDAO.deleteInsurance(ins_ID);
     }
+
+    @Override
+    public InsuranceResponseDto changeInsurancePermission(int ins_ID, int permission) throws Exception {
+        Insurance changedInsurance = insuranceDAO.updateInsurancePermission(ins_ID, permission);
+
+        InsuranceResponseDto insuranceResponseDto = new InsuranceResponseDto();
+
+        insuranceResponseDto.setIns_ID(changedInsurance.getInsId());
+        insuranceResponseDto.setIns_NM(changedInsurance.getInsName());
+        insuranceResponseDto.setDepartment(changedInsurance.getDepartment());
+        insuranceResponseDto.setTarget_Cust(changedInsurance.getTarget_Cust());
+        insuranceResponseDto.setDetail(changedInsurance.getDetail());
+        insuranceResponseDto.setInsFee(changedInsurance.getInsFee());
+        insuranceResponseDto.setRate(changedInsurance.getRate());
+        insuranceResponseDto.setCompensation(changedInsurance.getCompensation());
+        insuranceResponseDto.setPermission(changedInsurance.getPermission());
+
+        return insuranceResponseDto;
+    }
 }

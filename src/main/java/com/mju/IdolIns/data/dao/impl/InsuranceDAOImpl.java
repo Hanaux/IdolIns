@@ -58,4 +58,21 @@ public class InsuranceDAOImpl implements InsuranceDAO {
         throw new Exception();
     }
     }
+
+    @Override
+    public Insurance updateInsurancePermission(int insId, int permission) throws Exception {
+        Optional<Insurance> selectedInsurance = insuranceRepository.findById(insId);
+
+        Insurance updatedInsurance;
+        if(selectedInsurance.isPresent()) {
+            Insurance insurance = selectedInsurance.get();
+
+            insurance.setPermission(permission);
+
+            updatedInsurance = insuranceRepository.save(insurance);
+        }else {
+            throw new Exception();
+        }
+        return updatedInsurance;
+    }
 }

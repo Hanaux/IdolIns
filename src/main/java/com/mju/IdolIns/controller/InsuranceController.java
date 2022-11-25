@@ -1,6 +1,7 @@
 package com.mju.IdolIns.controller;
 
 import com.mju.IdolIns.data.dto.insurancedto.ChangeInsuranceNameDto;
+import com.mju.IdolIns.data.dto.insurancedto.ChangeInsurancePermissionDto;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceDto;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceResponseDto;
 import com.mju.IdolIns.service.InsuranceService;
@@ -61,5 +62,18 @@ public class InsuranceController {
 
         return ResponseEntity.status(HttpStatus.OK).body("DELETE SUCCESSFULLY :)");
     }
+
+    @PutMapping(value = "/insinfo/permission")
+    @Operation(summary = "보험 허가 변경 메서드", description = "보험허가 변경 메서드입니다.")
+    public ResponseEntity<InsuranceResponseDto> changeCustomerPermission(
+            @RequestBody ChangeInsurancePermissionDto changeInsurancePermissionDto)  throws Exception {
+        InsuranceResponseDto insuranceResponseDto = insuranceService.changeInsurancePermission(
+                changeInsurancePermissionDto.getIns_ID(),
+                changeInsurancePermissionDto.getPermission()
+        );
+
+        return ResponseEntity.status(HttpStatus.OK).body(insuranceResponseDto);
+    }
+
 }
 

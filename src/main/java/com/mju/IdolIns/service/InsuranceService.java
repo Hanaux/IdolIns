@@ -8,4 +8,5 @@ public interface InsuranceService {
     InsuranceResponseDto saveInsurance(InsuranceDto insuranceDto);
     InsuranceResponseDto changeInsuranceName(int ins_ID, String ins_NM) throws Exception;
     void deleteInsurance(int ins_ID) throws Exception;
+    InsuranceResponseDto changeInsurancePermission(int ins_ID, int permission) throws Exception;
 }

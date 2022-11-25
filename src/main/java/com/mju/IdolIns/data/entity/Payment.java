@@ -8,22 +8,22 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor @AllArgsConstructor @EqualsAndHashCode
-@Table(name = "charger_info")
+@Table(name = "payment_info")
 @ToString
-public class Charger {
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int docID;
+
+    @Column(nullable = false)
     private int accNum;
 
     @Column(nullable = false)
-    private int insID;
+    private int custID;
 
     @Column(nullable = false)
-    private int lossAmountHuman;
-
-    @Column(nullable = false)
-    private int lossAmountProperty;
+    private String date;
 
 
 }

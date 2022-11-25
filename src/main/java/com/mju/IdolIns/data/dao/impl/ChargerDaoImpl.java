@@ -34,9 +34,7 @@ public class ChargerDaoImpl implements ChargerDao {
     }
 
     @Override
-    public Charger updateChargerInfo(int accident_NM, int ins_ID, int lossAmountHuman, int lossAmountProperty,
-                                   int decisionCompensationProperty, int decisionCompensationHuman, int cust_ID,
-                                   int doc_ID, String date, int paymentReportOK, int paymentCompleted) throws Exception {
+    public Charger updateChargerInfo(int accident_NM, int ins_ID, int lossAmountHuman, int lossAmountProperty) throws Exception {
         Optional<Charger> selectedCharger = chargerRepository.findById(accident_NM);
 
         Charger updateCharger;
@@ -46,13 +44,6 @@ public class ChargerDaoImpl implements ChargerDao {
             charger.setInsID(ins_ID);
             charger.setLossAmountHuman(lossAmountHuman);
             charger.setLossAmountProperty(lossAmountProperty);
-            charger.setDecisionCompensationProperty(decisionCompensationProperty);
-            charger.setDecisionCompensationHuman(decisionCompensationHuman);
-            charger.setCustID(cust_ID);
-            charger.setDocID(doc_ID);
-            charger.setDate(date);
-            charger.setPaymentReportOK(paymentReportOK);
-            charger.setPaymentCompleted(paymentCompleted);
 
             updateCharger = chargerRepository.save(charger);
         }else {
