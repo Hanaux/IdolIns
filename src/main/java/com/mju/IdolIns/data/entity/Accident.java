@@ -6,28 +6,28 @@ import javax.persistence.*;
 
 @Getter@Setter@Entity
 @NoArgsConstructor@AllArgsConstructor@EqualsAndHashCode
-@Table(name = "acchandler_info") @ToString
-public class AccidentHandler {
+@Table(name = "acc_info") @ToString
+public class Accident{
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int accNum;
 
     @Column(nullable = false)
-    private String accidentSpot;
+    private String name;
+
+    @Column(nullable = false)
+    private String dateOfBirth;
+
+    @Column(nullable = false)
+    private int sex;
 
     @Column(nullable = false)
     private String accidentDetail;
 
     @Column(nullable = false)
-    private int custId;
+    private String accidentSpot;
 
     @Column(nullable = false)
-    private int insId;
-
-    @Column(nullable = false)
-    private int indemnification;
-
-    @Column(nullable = false)
-    private int damageAmount;
+    private String phoneNum;
 }

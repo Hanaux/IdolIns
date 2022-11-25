@@ -8,6 +8,7 @@ import lombok.*;
 @ToString
 @Builder
 public class AccidentHandlerDto {
+    private int Accident_Num;
     private String Accident_Spot;
     private String Accident_Detail;
     private int Cust_ID;

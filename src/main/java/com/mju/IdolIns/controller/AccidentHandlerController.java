@@ -22,7 +22,7 @@ public class AccidentHandlerController {
     public AccidentHandlerController(AccidentHandlerService accidentHandlerService){this.accidentHandlerService = accidentHandlerService;}
 
     @GetMapping(value = "/acchandlerinfo/{id}")
-    @Operation(summary = "사고접수 조회 메서드", description = "사고접수 조회 메서드입니다.")
+    @Operation(summary = "사고처리 조회 메서드", description = "사고처리 조회 메서드입니다.")
     public ResponseEntity<AccidentHandlerResponseDto> getAccidentHandler(
             @Parameter @PathVariable int id) {
         AccidentHandlerResponseDto accidentHandlerResponseDto = accidentHandlerService.getAccidentHandler(id);
@@ -31,15 +31,15 @@ public class AccidentHandlerController {
     }
 
     @PostMapping(value = "/acchandlerinfo/enrollment")
-    @Operation(summary = "사고접수 등록 메서드", description = "사고접수 등록 메서드입니다.")
-    public ResponseEntity<AccidentHandlerResponseDto> createCustomer(@RequestBody AccidentHandlerDto accidentHandlerDto){
+    @Operation(summary = "사고처리 등록 메서드", description = "사고처리 등록 메서드입니다.")
+    public ResponseEntity<AccidentHandlerResponseDto> createAccidentHandler(@RequestBody AccidentHandlerDto accidentHandlerDto){
         AccidentHandlerResponseDto accidentHandlerResponseDto = accidentHandlerService.saveAccidentHandler(accidentHandlerDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(accidentHandlerResponseDto);
     }
 
     @PutMapping(value = "/acchandlerinfo/modification")
-    @Operation(summary = "사고접수 수정 메서드", description = "사고접수 수정 메서드입니다.")
+    @Operation(summary = "사고처리 수정 메서드", description = "사고처리 수정 메서드입니다.")
     public ResponseEntity<AccidentHandlerResponseDto> changeAccidentHandler(
             @RequestBody ChangeAccidentHandlerDto changeAccidentHandlerDto)throws Exception{
         AccidentHandlerResponseDto accidentHandlerResponseDto = accidentHandlerService.changeAccidentHandlerInfo(
@@ -51,7 +51,7 @@ public class AccidentHandlerController {
     }
 
     @DeleteMapping(value = "/acchandlerinfo/deletion/{id}")
-    @Operation(summary = "사고접수 삭제 메서드", description = "사고접수 삭제 메서드입니다.")
+    @Operation(summary = "사고처리 삭제 메서드", description = "사고처리 삭제 메서드입니다.")
     public ResponseEntity<String> deleteAccidentHandler(
             @Parameter @PathVariable int id) throws Exception{
         accidentHandlerService.deleteAccidentHandler(id);
