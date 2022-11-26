@@ -35,7 +35,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
     @Override
     public Payment updatePaymentInfo(int docID, int accNum, int custID,  String date) throws Exception {
-        Optional<Payment> selectedPayment = paymentRepository.findById(accNum);
+        Optional<Payment> selectedPayment = paymentRepository.findById(docID);
 
         Payment updatePayment;
         if(selectedPayment.isPresent()) {
