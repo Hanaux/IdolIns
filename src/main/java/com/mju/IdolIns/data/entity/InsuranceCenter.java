@@ -20,4 +20,7 @@ public class InsuranceCenter {
 
     @Column(nullable = false)
     private String centerAddress;
+
+    @Column(nullable = false)
+    private String centerHotline;
 }

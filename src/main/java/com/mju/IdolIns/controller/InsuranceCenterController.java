@@ -49,7 +49,8 @@ public class InsuranceCenterController {
                 changeInsuranceCenterInfoDto.getCenterNum(),
                 changeInsuranceCenterInfoDto.getCenterName(),
                 changeInsuranceCenterInfoDto.getCenterLocation(),
-                changeInsuranceCenterInfoDto.getCenterAddress()
+                changeInsuranceCenterInfoDto.getCenterAddress(),
+                changeInsuranceCenterInfoDto.getCenterHotline()
         );
 
         return ResponseEntity.status(HttpStatus.OK).body(centerResponseDto);

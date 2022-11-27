@@ -7,4 +7,5 @@ public class InsuranceCenterDto {
     private String centerName;
     private String centerLocation;
     private String centerAddress;
+    private String centerHotline;
 }

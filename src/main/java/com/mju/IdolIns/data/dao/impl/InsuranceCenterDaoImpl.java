@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.text.html.Option;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -30,7 +32,7 @@ public class InsuranceCenterDaoImpl implements InsuranceCenterDao {
     }
 
     @Override
-    public InsuranceCenter updateInsuranceCenter(int centerNum, String centerName, String centerLocation, String centerAddress) throws Exception {
+    public InsuranceCenter updateInsuranceCenter(int centerNum, String centerName, String centerLocation, String centerAddress, String centerHotline) throws Exception {
         Optional<InsuranceCenter> selectedCenter = insuranceCenterRepository.findById(centerNum);
         InsuranceCenter updateCenter;
 
@@ -39,12 +41,21 @@ public class InsuranceCenterDaoImpl implements InsuranceCenterDao {
             center.setCenterName(centerName);
             center.setCenterLocation(centerLocation);
             center.setCenterAddress(centerAddress);
+            center.setCenterHotline(centerHotline);
 
             updateCenter = insuranceCenterRepository.save(center);
         }else{
             throw new Exception();
         }
         return updateCenter;
+    }
+
+    @Override
+    public List<InsuranceCenter> getAllInsuranceCenter(){
+        List<InsuranceCenter> centerList;
+        centerList = insuranceCenterRepository.findAll();
+
+        return centerList;
     }
 
     @Override

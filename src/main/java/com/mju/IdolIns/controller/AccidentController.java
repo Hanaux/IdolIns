@@ -3,6 +3,7 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.accidentdto.AccidentDto;
 import com.mju.IdolIns.data.dto.accidentdto.AccidentResponseDto;
 import com.mju.IdolIns.data.dto.accidentdto.ChangeAccidentDto;
+import com.mju.IdolIns.service.AccidentDispatchService;
 import com.mju.IdolIns.service.AccidentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -17,9 +18,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/accident")
 public class AccidentController {
     private final AccidentService accidentService;
+    private final AccidentDispatchService accidentDispatchService;
 
     @Autowired
-    public AccidentController(AccidentService accidentService){this.accidentService = accidentService;}
+    public AccidentController(AccidentService accidentService, AccidentDispatchService accidentDispatchService){
+        this.accidentService = accidentService;
+        this.accidentDispatchService = accidentDispatchService;
+    }
 
     @GetMapping(value = "/accidentinfo/{id}")
     @Operation(summary = "사고접수 조회 메서드", description = "사고접수 조회 메서드입니다.")
@@ -29,6 +34,17 @@ public class AccidentController {
         AccidentResponseDto accidentResponseDto = accidentService.getAccident(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(accidentResponseDto);
+    }
+
+    @GetMapping(value = "/accidentinfo/dispatch")
+    @Operation(summary = "사고접수 최근접 센터 조회 메서드", description = "사고접수 최근접 센터 조회 메서드입니다.")
+    public ResponseEntity<String> getDistpatchCenter(
+//            @RequestBody String accidentSpot
+              @Parameter String accidentSpot
+    ){
+        String dispatchInfo = accidentDispatchService.getCenter(accidentSpot);
+        System.out.println("why andem");
+        return ResponseEntity.status(HttpStatus.OK).body(dispatchInfo);
     }
 
     @PostMapping(value = "/accidentinfo/enrollment")

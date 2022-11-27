@@ -26,6 +26,7 @@ public class InsuranceCenterServiceImpl implements InsuranceCenterService {
         centerResponseDto.setCenterName(insuranceCenter.getCenterName());
         centerResponseDto.setCenterLocation(insuranceCenter.getCenterLocation());
         centerResponseDto.setCenterAddress(insuranceCenter.getCenterAddress());
+        centerResponseDto.setCenterHotline(insuranceCenter.getCenterHotline());
 
         return centerResponseDto;
     }
@@ -36,6 +37,7 @@ public class InsuranceCenterServiceImpl implements InsuranceCenterService {
         insuranceCenter.setCenterName(insuranceCenterDto.getCenterName());
         insuranceCenter.setCenterLocation(insuranceCenterDto.getCenterLocation());
         insuranceCenter.setCenterAddress(insuranceCenterDto.getCenterAddress());
+        insuranceCenter.setCenterHotline(insuranceCenterDto.getCenterHotline());
 
         InsuranceCenter savedCenter = insuranceCenterDao.insertInsuranceCenter(insuranceCenter);
 
@@ -45,20 +47,22 @@ public class InsuranceCenterServiceImpl implements InsuranceCenterService {
         insuranceCenterResponseDto.setCenterName(savedCenter.getCenterName());
         insuranceCenterResponseDto.setCenterLocation(savedCenter.getCenterLocation());
         insuranceCenterResponseDto.setCenterAddress(savedCenter.getCenterAddress());
+        insuranceCenterResponseDto.setCenterHotline(savedCenter.getCenterHotline());
 
         return insuranceCenterResponseDto;
     }
 
     @Override
     public InsuranceCenterResponseDto changeInsuranceCenterInfo(int centerNum, String centerName,
-                                                                String centerLocation, String centerAddress) throws Exception {
-        InsuranceCenter changedCenter = insuranceCenterDao.updateInsuranceCenter(centerNum, centerName, centerLocation, centerAddress);
+                                                                String centerLocation, String centerAddress, String centerHotline) throws Exception {
+        InsuranceCenter changedCenter = insuranceCenterDao.updateInsuranceCenter(centerNum, centerName, centerLocation, centerAddress,centerHotline);
 
         InsuranceCenterResponseDto insuranceCenterResponseDto = new InsuranceCenterResponseDto();
         insuranceCenterResponseDto.setCenterNum(changedCenter.getCenterNum());
         insuranceCenterResponseDto.setCenterName(changedCenter.getCenterName());
         insuranceCenterResponseDto.setCenterLocation(changedCenter.getCenterLocation());
         insuranceCenterResponseDto.setCenterAddress(changedCenter.getCenterAddress());
+        insuranceCenterResponseDto.setCenterHotline(changedCenter.getCenterHotline());
         return insuranceCenterResponseDto;
     }
 
