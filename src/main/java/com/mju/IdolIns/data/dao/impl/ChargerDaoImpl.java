@@ -1,11 +1,8 @@
 package com.mju.IdolIns.data.dao.impl;
 
 import com.mju.IdolIns.data.dao.ChargerDao;
-import com.mju.IdolIns.data.dao.InsuranceDAO;
 import com.mju.IdolIns.data.entity.Charger;
-import com.mju.IdolIns.data.entity.Insurance;
 import com.mju.IdolIns.data.repository.ChargerRepository;
-import com.mju.IdolIns.data.repository.InsuranceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

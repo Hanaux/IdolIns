@@ -1,6 +1,6 @@
 package com.mju.IdolIns.data.dao.impl;
 
-import com.mju.IdolIns.data.dao.InsuranceDAO;
+import com.mju.IdolIns.data.dao.InsuranceDao;
 import com.mju.IdolIns.data.entity.Insurance;
 import com.mju.IdolIns.data.repository.InsuranceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class InsuranceDAOImpl implements InsuranceDAO {
+public class InsuranceDaoImpl implements InsuranceDao {
 
     private final InsuranceRepository insuranceRepository;
 
     @Autowired
-    public InsuranceDAOImpl(InsuranceRepository insuranceRepository) {
+    public InsuranceDaoImpl(InsuranceRepository insuranceRepository) {
         this.insuranceRepository = insuranceRepository;
     }
 

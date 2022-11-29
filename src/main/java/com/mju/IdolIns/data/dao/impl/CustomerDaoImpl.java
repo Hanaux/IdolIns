@@ -1,6 +1,6 @@
 package com.mju.IdolIns.data.dao.impl;
 
-import com.mju.IdolIns.data.dao.CustomerDAO;
+import com.mju.IdolIns.data.dao.CustomerDao;
 import com.mju.IdolIns.data.entity.Customer;
 import com.mju.IdolIns.data.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class CustomerDAOImpl implements CustomerDAO {
+public class CustomerDaoImpl implements CustomerDao {
 
     private final CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerDAOImpl(CustomerRepository customerRepository) {
+    public CustomerDaoImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 

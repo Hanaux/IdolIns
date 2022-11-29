@@ -1,6 +1,6 @@
 package com.mju.IdolIns.service.impl;
 
-import com.mju.IdolIns.data.dao.InsuranceDAO;
+import com.mju.IdolIns.data.dao.InsuranceDao;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceDto;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceResponseDto;
 import com.mju.IdolIns.data.entity.Insurance;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class InsuranceServiceImpl implements InsuranceService {
 
-    private final InsuranceDAO insuranceDAO;
+    private final InsuranceDao insuranceDAO;
 
     @Autowired
-    public InsuranceServiceImpl(InsuranceDAO insuranceDAO){
+    public InsuranceServiceImpl(InsuranceDao insuranceDAO){
         this.insuranceDAO = insuranceDAO;
     }
     @Override
