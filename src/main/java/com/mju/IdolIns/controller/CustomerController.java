@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @Tag(name = "고객", description = "고객 정보 관련 api입니다.")
 @RequestMapping("/customer")
@@ -21,6 +23,11 @@ public class CustomerController{
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping("/hello")
+    public String hello(){
+        return "안녕하세요. 현재 서버시간은 "+new Date() +"입니다. \n";
     }
 
     @GetMapping(value = "/custinfo/{id}")
