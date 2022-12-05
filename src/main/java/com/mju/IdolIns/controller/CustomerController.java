@@ -10,33 +10,43 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
-@RestController
+@Controller
 @Tag(name = "고객", description = "고객 정보 관련 api입니다.")
 @RequestMapping("/customer")
 public class CustomerController{
     private final CustomerService customerService;
+
+    @GetMapping(value = "/main")
+    public String customer(Model model) {
+        model.addAttribute("customer", "고객 정보 시스템입니다.");
+
+        return "customermain";
+    }
 
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "안녕하세요. 현재 서버시간은 "+new Date() +"입니다. \n";
-    }
-
     @GetMapping(value = "/custinfo/{id}")
     @Operation(summary = "회원정보 조회 메서드", description = "회원정보 조회 메서드입니다.")
-    public ResponseEntity<CustomerResponseDto> getCustomer(
+    public String getCustomer(Model model,
             @Parameter @PathVariable int id) {
         CustomerResponseDto customerResponseDto = customerService.getCustomer(id);
+        //ResponseEntity<CustomerResponseDto> responseEntity = new ResponseEntity<CustomerResponseDto>(customerResponseDto,HttpStatus.OK);
+        //ResponseEntity.status(HttpStatus.OK).body(customerResponseDto)
 
-        return ResponseEntity.status(HttpStatus.OK).body(customerResponseDto);
+        model.addAttribute("customerid", customerResponseDto.getCust_ID());
+        model.addAttribute("customername", customerResponseDto.getCust_NM());
+        model.addAttribute("customerssn", customerResponseDto.getSSN());
+        model.addAttribute("customerpn", customerResponseDto.getCust_PN());
+        model.addAttribute("customeraccnum", customerResponseDto.getAcc_NM());
+        model.addAttribute("customersex", customerResponseDto.getSex());
+        return "customerinfo";
     }
 
     @PostMapping(value = "/custinfo/enrollment")

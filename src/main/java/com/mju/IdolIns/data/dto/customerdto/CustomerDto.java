@@ -13,6 +13,7 @@ public class CustomerDto {
     private String Cust_PN;
     private String Acc_NM;
     private int Sex;
+    private String Job;
 
 //    public CustomerDto(String custNm, String ssn, String custPn,
 //                       String accNm, int sex){

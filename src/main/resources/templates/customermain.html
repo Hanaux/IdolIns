@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div>
+    <p th:text="${customer}">message</p>
+</div>
+    <div>
+        <input id="id" type="text" placeholder="아이디를 입력해 주세요.">
+        <a href="customerinfo.html" th:href="@{/customer/custinfo/enrollment}">고객정보 조회 페이지</a>
+    </div>
+    <div>
+        <a th:href="@{/custinfo/deletion}">고객 삭제 페이지</a>
+    </div>
+</body>
+</html>

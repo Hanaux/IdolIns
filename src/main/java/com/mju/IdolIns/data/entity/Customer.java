@@ -31,4 +31,7 @@ public class Customer {
     @Column(nullable = false)
     private int sex;
 
+    @Column(nullable = false)
+    private String job;
+
 }

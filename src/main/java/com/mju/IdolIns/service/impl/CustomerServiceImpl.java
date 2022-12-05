@@ -29,6 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
         customerResponseDto.setCust_PN(customer.getCustPN());
         customerResponseDto.setAcc_NM(customer.getAccNum());
         customerResponseDto.setSex(customer.getSex());
+        customerResponseDto.setJob(customer.getJob());
 
         return customerResponseDto;
     }
@@ -41,6 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setCustPN(customerDto.getCust_PN());
         customer.setAccNum(customerDto.getAcc_NM());
         customer.setSex(customerDto.getSex());
+        customer.setJob(customerDto.getJob());
 
         Customer savedCustomer = customerDAO.insertCustomer(customer);
 
@@ -52,6 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
         customerResponseDto.setCust_PN(savedCustomer.getCustPN());
         customerResponseDto.setAcc_NM(savedCustomer.getAccNum());
         customerResponseDto.setSex(savedCustomer.getSex());
+        customerResponseDto.setJob(savedCustomer.getJob());
 
         return customerResponseDto;
     }
@@ -67,6 +70,7 @@ public class CustomerServiceImpl implements CustomerService {
         customerResponseDto.setCust_PN(changedCustomer.getCustPN());
         customerResponseDto.setAcc_NM(changedCustomer.getAccNum());
         customerResponseDto.setSex(changedCustomer.getSex());
+        customerResponseDto.setJob(changedCustomer.getJob());
 
         return customerResponseDto;
     }
