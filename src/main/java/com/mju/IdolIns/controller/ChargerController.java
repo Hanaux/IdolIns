@@ -24,6 +24,7 @@ public class ChargerController {
     }
 
     @GetMapping(value = "/chargerinfo/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "청구정보 조회 메서드", description = "청구정보 조회 메서드입니다.")
     public ResponseEntity<ChargerResponseDto> getCharger(
             @Parameter @PathVariable int id) {
@@ -33,6 +34,7 @@ public class ChargerController {
     }
 
     @PostMapping(value = "/chargerinfo/enrollment")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "청구정보 등록 메서드", description = "청구정보 등록 메서드입니다.")
     public ResponseEntity<ChargerResponseDto> createCharger(@RequestBody ChargerDto chargerDto) {
         ChargerResponseDto chargerResponseDto = chargerService.saveCharger(chargerDto);
@@ -41,6 +43,7 @@ public class ChargerController {
     }
 
     @PutMapping(value = "/chargerinfo/modification")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "청구 정보 수정 메서드", description = "청구정보 수정 메서드입니다.")
     public ResponseEntity<ChargerResponseDto> changeCharger(
         @RequestBody ChangeChargerInfoDto changeChargerInfoDto) throws Exception{
@@ -53,6 +56,7 @@ public class ChargerController {
     }
 
     @DeleteMapping(value = "/chargerinfo/deletion/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "청구 정보 삭제 메서드", description = "청구정보 삭제 메서드입니다.")
     public ResponseEntity<String> deleteCharger(
             @Parameter @PathVariable

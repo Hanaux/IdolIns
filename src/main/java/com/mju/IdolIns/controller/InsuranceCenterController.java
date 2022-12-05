@@ -22,6 +22,7 @@ public class InsuranceCenterController {
     public InsuranceCenterController(InsuranceCenterService insuranceCenterService) {this.insuranceCenterService = insuranceCenterService;}
 
     @GetMapping(value = "/centerinfo/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "센터정보 조회 메서드", description = "센터정보 조회 메서드입니다.")
     public ResponseEntity<InsuranceCenterResponseDto> getInsuranceCenter(
             @Parameter @PathVariable int id) {
@@ -31,6 +32,7 @@ public class InsuranceCenterController {
     }
 
     @PostMapping(value = "/centerinfo/enrollment")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "센터정보 등록 메서드", description = "센터정보 등록 메서드입니다.")
     public ResponseEntity<InsuranceCenterResponseDto> createInsuranceCenter(@RequestBody InsuranceCenterDto insuranceCenterDto) {
         InsuranceCenterResponseDto insuranceCenterResponseDto = insuranceCenterService.saveInsuranceCenter(insuranceCenterDto);
@@ -39,6 +41,7 @@ public class InsuranceCenterController {
     }
 
     @PutMapping(value = "/centerinfo/modification")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "센터정보 수정 메서드", description = "센터정보 수정 메서드입니다.")
     public ResponseEntity<InsuranceCenterResponseDto> changeInsuranceCenterInfo(
             @RequestBody ChangeInsuranceCenterInfoDto changeInsuranceCenterInfoDto) throws Exception{
@@ -54,6 +57,7 @@ public class InsuranceCenterController {
     }
 
     @DeleteMapping(value = "/centerinfo/deletion/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "센터정보 삭제 메서드", description = "센터정보 삭제 메서드입니다.")
     public ResponseEntity<String> deleteInsuranceCenter(
             @Parameter @PathVariable int id

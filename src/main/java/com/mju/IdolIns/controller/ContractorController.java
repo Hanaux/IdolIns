@@ -9,14 +9,7 @@ import com.mju.IdolIns.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.mju.IdolIns.service.ContractorService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,6 +35,7 @@ public class ContractorController {
 
 
     @GetMapping(value = "/continfo/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "계약정보 조회 메서드", description = "계약정보 조회 메서드입니다.")
     public ResponseEntity<ContractorResponseDto> getContractor(
             @Parameter @PathVariable int id) {
@@ -51,6 +45,7 @@ public class ContractorController {
     }
 
     @GetMapping(value = "/continfo/customer/{cust_id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "고객 계약정보 조회 메서드", description = "고객의 계약정보 조회 메서드입니다.")
     public ResponseEntity<String> getContractorIDByCustID(
             @Parameter @PathVariable int cust_id) {
@@ -91,6 +86,7 @@ public class ContractorController {
     }
 
     @GetMapping(value = "/continfo/{id}/uw")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "인수심사 메서드", description = "인수심사 메서드입니다.")
     public ResponseEntity<Float> underwrite(
             @Parameter @PathVariable int insurance_id, @Parameter String jobInfo, @Parameter String insCate) {
@@ -101,6 +97,7 @@ public class ContractorController {
     }
 
     @PostMapping(value = "/continfo/enrollment")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "계약정보 등록 메서드", description = "계약정보 등록 메서드입니다.")
     public ResponseEntity<ContractorResponseDto> createCustomer(@RequestBody ContractorDto contractorDto) {
         ContractorResponseDto contractorResponseDto = contractorService.saveContractor(contractorDto);
@@ -109,6 +106,7 @@ public class ContractorController {
     }
 
     @PutMapping(value = "/continfo/modification")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "계약 수정 메서드", description = "계약 수정 메서드입니다.")
     public ResponseEntity<ContractorResponseDto> changeContractor(
             @RequestBody ChangeContractorDto changeContractorDto) throws Exception{
@@ -137,6 +135,7 @@ public class ContractorController {
 //	}
 
     @DeleteMapping(value = "/continfo/deletion/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "계약 삭제 메서드", description = "계약 삭제 메서드입니다.")
     public ResponseEntity<String> deleteContractor(
             @Parameter @PathVariable int id) throws Exception{

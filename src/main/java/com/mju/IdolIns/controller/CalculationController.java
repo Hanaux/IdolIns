@@ -28,6 +28,7 @@ public class CalculationController {
     }
 
     @GetMapping(value = "/calculationinfo/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "산출정보 조회 메서드", description = "산출정보 조회 메서드입니다.")
     public ResponseEntity<CalculationResponseDto> getCalculation(
             @Parameter @PathVariable int id) {
@@ -37,6 +38,7 @@ public class CalculationController {
     }
 
     @PostMapping(value = "/calculationinfo/enrollment")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "산출정보 등록 메서드", description = "산출정보 등록 메서드입니다.")
     public ResponseEntity<CalculationResponseDto> createCalculation(@RequestBody CalculationDto calculationDto) {
         CalculationResponseDto calculationResponseDto = calculationService.saveCalculation(calculationDto);
@@ -45,6 +47,7 @@ public class CalculationController {
     }
 
     @PutMapping(value = "/calculationinfo/modification")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "산출 정보 수정 메서드", description = "산출정보 수정 메서드입니다.")
     public ResponseEntity<CalculationResponseDto> changeCalculation(
         @RequestBody ChangeCalculationInfoDto changeCalculationInfoDto) throws Exception{
@@ -57,6 +60,7 @@ public class CalculationController {
     }
 
     @DeleteMapping(value = "/calculationinfo/deletion/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "산출 정보 삭제 메서드", description = "산출정보 삭제 메서드입니다.")
     public ResponseEntity<String> deleteCharger(
             @Parameter @PathVariable

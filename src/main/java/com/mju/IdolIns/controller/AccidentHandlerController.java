@@ -22,6 +22,7 @@ public class AccidentHandlerController {
     public AccidentHandlerController(AccidentHandlerService accidentHandlerService){this.accidentHandlerService = accidentHandlerService;}
 
     @GetMapping(value = "/acchandlerinfo/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "사고처리 조회 메서드", description = "사고처리 조회 메서드입니다.")
     public ResponseEntity<AccidentHandlerResponseDto> getAccidentHandler(
             @Parameter @PathVariable int id) {
@@ -31,6 +32,7 @@ public class AccidentHandlerController {
     }
 
     @PostMapping(value = "/acchandlerinfo/enrollment")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "사고처리 등록 메서드", description = "사고처리 등록 메서드입니다.")
     public ResponseEntity<AccidentHandlerResponseDto> createAccidentHandler(@RequestBody AccidentHandlerDto accidentHandlerDto){
         AccidentHandlerResponseDto accidentHandlerResponseDto = accidentHandlerService.saveAccidentHandler(accidentHandlerDto);
@@ -39,6 +41,7 @@ public class AccidentHandlerController {
     }
 
     @PutMapping(value = "/acchandlerinfo/modification")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "사고처리 수정 메서드", description = "사고처리 수정 메서드입니다.")
     public ResponseEntity<AccidentHandlerResponseDto> changeAccidentHandler(
             @RequestBody ChangeAccidentHandlerDto changeAccidentHandlerDto)throws Exception{
@@ -51,6 +54,7 @@ public class AccidentHandlerController {
     }
 
     @DeleteMapping(value = "/acchandlerinfo/deletion/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "사고처리 삭제 메서드", description = "사고처리 삭제 메서드입니다.")
     public ResponseEntity<String> deleteAccidentHandler(
             @Parameter @PathVariable int id) throws Exception{

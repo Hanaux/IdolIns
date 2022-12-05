@@ -25,12 +25,8 @@ public class CustomerController{
         this.customerService = customerService;
     }
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "안녕하세요. 현재 서버시간은 "+new Date() +"입니다. \n";
-    }
-
     @GetMapping(value = "/custinfo/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "회원정보 조회 메서드", description = "회원정보 조회 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> getCustomer(
             @Parameter @PathVariable int id) {
@@ -40,6 +36,7 @@ public class CustomerController{
     }
 
     @PostMapping(value = "/custinfo/enrollment")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "회원정보 등록 메서드", description = "회원정보 등록 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> createCustomer(@RequestBody CustomerDto customerDto) {
         CustomerResponseDto customerResponseDto = customerService.saveCustomer(customerDto);
@@ -48,6 +45,7 @@ public class CustomerController{
     }
 
     @PutMapping(value = "/custinfo/modification")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "회원 이름 수정 메서드", description = "회원정보 이름 수정 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> changeCustomerName(
         @RequestBody ChangeCustomerNameDto changeCustomerNameDto) throws Exception{
@@ -60,6 +58,7 @@ public class CustomerController{
     }
 
     @DeleteMapping(value = "/custinfo/deletion/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "회원 정보 삭제 메서드", description = "회원정보 삭제 메서드입니다.")
     public ResponseEntity<String> deleteCustomer(
             @Parameter @PathVariable

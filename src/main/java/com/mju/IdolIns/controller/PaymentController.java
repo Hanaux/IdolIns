@@ -28,6 +28,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/paymentinfo/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "지급정보 조회 메서드", description = "지급정보 조회 메서드입니다.")
     public ResponseEntity<PaymentResponseDto> getPayment(
             @Parameter @PathVariable int id) {
@@ -37,6 +38,7 @@ public class PaymentController {
     }
 
     @PostMapping(value = "/paymentinfo/enrollment")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "지급정보 등록 메서드", description = "지급정보 등록 메서드입니다.")
     public ResponseEntity<PaymentResponseDto> createPayment(@RequestBody PaymentDto paymentDto) {
         PaymentResponseDto paymentResponseDto = paymentService.savePayment(paymentDto);
@@ -45,6 +47,7 @@ public class PaymentController {
     }
 
     @PutMapping(value = "/paymentinfo/modification")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "지급 정보 수정 메서드", description = "지급정보 수정 메서드입니다.")
     public ResponseEntity<PaymentResponseDto> changePayment(
         @RequestBody ChangePaymentInfoDto changePaymentInfoDto) throws Exception{
@@ -57,6 +60,7 @@ public class PaymentController {
     }
 
     @DeleteMapping(value = "/paymentinfo/deletion/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "청구 정보 삭제 메서드", description = "청구정보 삭제 메서드입니다.")
     public ResponseEntity<String> deletePayment(
             @Parameter @PathVariable
