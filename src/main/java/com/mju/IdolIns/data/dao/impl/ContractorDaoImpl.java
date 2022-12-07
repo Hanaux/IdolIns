@@ -1,14 +1,13 @@
 package com.mju.IdolIns.data.dao.impl;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.mju.IdolIns.data.dao.ContractorDao;
 import com.mju.IdolIns.data.entity.Contractor;
 import com.mju.IdolIns.data.repository.ContractorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ContractorDaoImpl implements ContractorDao {
@@ -47,6 +46,10 @@ public class ContractorDaoImpl implements ContractorDao {
 			contractor.setInstallment(installment);
 			contractor.setPayment(is_Payment);
 			contractor.setPayDay(pay_Day);
+			contractor.setInstallmentMonth(installmentMonth);
+			contractor.setLastMonth(lastMonth);
+			contractor.setEffective(effective);
+			contractor.setInstallmentStart(installmentStart);
 			
 			updateContractor = contractorRepository.save(contractor);
 		} else {

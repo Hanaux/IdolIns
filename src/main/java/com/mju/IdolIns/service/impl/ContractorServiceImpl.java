@@ -34,6 +34,10 @@ public class ContractorServiceImpl implements ContractorService {
 		contractorResponseDto.setInstallment(contractor.isInstallment());
 		contractorResponseDto.set_Payment(contractor.isPayment());
 		contractorResponseDto.setPayDay(contractor.getPayDay());
+		contractorResponseDto.setInstallmentMonth(contractor.getInstallmentMonth());
+		contractorResponseDto.setLastMonth(contractor.getLastMonth());
+		contractorResponseDto.setEffective(contractor.isEffective());
+		contractorResponseDto.setInstallmentStart(contractor.getInstallmentStart());
 		
 		return contractorResponseDto;
 	}
@@ -88,6 +92,10 @@ public class ContractorServiceImpl implements ContractorService {
 		contractorResponseDto.setInstallment(changedContractor.isInstallment());
 		contractorResponseDto.set_Payment(changedContractor.isPayment());
 		contractorResponseDto.setPayDay(changedContractor.getPayDay());
+		contractorResponseDto.setInstallmentMonth(changedContractor.getInstallmentMonth());
+		contractorResponseDto.setLastMonth(changedContractor.getLastMonth());
+		contractorResponseDto.setEffective(changedContractor.isEffective());
+		contractorResponseDto.setInstallmentStart(changedContractor.getInstallmentStart());
 		
 		return contractorResponseDto;
 	}
