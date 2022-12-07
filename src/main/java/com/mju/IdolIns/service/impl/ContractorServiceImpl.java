@@ -1,15 +1,13 @@
 package com.mju.IdolIns.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.mju.IdolIns.data.dao.ContractorDao;
 import com.mju.IdolIns.data.dto.contractordto.ContractorDto;
 import com.mju.IdolIns.data.dto.contractordto.ContractorResponseDto;
 import com.mju.IdolIns.data.entity.Contractor;
 import com.mju.IdolIns.service.ContractorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,6 +48,10 @@ public class ContractorServiceImpl implements ContractorService {
 		contractor.setInstallment(contractorDto.isInstallment());
 		contractor.setPayment(contractorDto.is_Payment());
 		contractor.setPayDay(contractorDto.getPayDay());
+		contractor.setInstallmentMonth(contractorDto.getInstallmentMonth());
+		contractor.setLastMonth(contractorDto.getLastMonth());
+		contractor.setEffective(contractorDto.isEffective());
+		contractor.setInstallmentStart(contractorDto.getInstallmentStart());
 		
 		Contractor savedContract = contractorDao.insertContractor(contractor);
 		
@@ -63,6 +65,10 @@ public class ContractorServiceImpl implements ContractorService {
 		contractorResponseDto.setInstallment(savedContract.isInstallment());
 		contractorResponseDto.set_Payment(savedContract.isPayment());
 		contractorResponseDto.setPayDay(savedContract.getPayDay());
+		contractorResponseDto.setInstallmentMonth(savedContract.getInstallmentMonth());
+		contractorResponseDto.setLastMonth(savedContract.getLastMonth());
+		contractorResponseDto.setEffective(savedContract.isEffective());
+		contractorResponseDto.setInstallmentStart(savedContract.getInstallmentStart());
 		
 		return contractorResponseDto;
 	}
