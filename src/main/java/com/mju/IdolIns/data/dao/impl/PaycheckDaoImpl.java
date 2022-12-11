@@ -28,14 +28,14 @@ public class PaycheckDaoImpl implements PaycheckDao {
     }
 
     @Override
-    public Paycheck selectPaycheck(int docID) {
-        Paycheck selectedPaycheck = paycheckRepository.getById(docID);
+    public Paycheck selectPaycheck(int PayCheckID) {
+        Paycheck selectedPaycheck = paycheckRepository.getById(PayCheckID);
         return selectedPaycheck;
     }
 
     @Override
-    public Paycheck updatePaycheckInfo(int docID, int paymentReportOK, int paymentCompleted) throws Exception {
-        Optional<Paycheck> selectedPaycheck = paycheckRepository.findById(docID);
+    public Paycheck updatePaycheckInfo(int PayCheckID, int payID, int paymentReportOK, int paymentCompleted) throws Exception {
+        Optional<Paycheck> selectedPaycheck = paycheckRepository.findById(PayCheckID);
 
         Paycheck updatePaycheck;
         if(selectedPaycheck.isPresent()) {
@@ -52,8 +52,8 @@ public class PaycheckDaoImpl implements PaycheckDao {
     }
 
     @Override
-    public void deletePaycheck(int docID) throws Exception {
-    Optional<Paycheck> selectedPaycheck = paycheckRepository.findById(docID);
+    public void deletePaycheck(int PayCheckID) throws Exception {
+    Optional<Paycheck> selectedPaycheck = paycheckRepository.findById(PayCheckID);
 
     if(selectedPaycheck.isPresent()){
         Paycheck paycheck = selectedPaycheck.get();

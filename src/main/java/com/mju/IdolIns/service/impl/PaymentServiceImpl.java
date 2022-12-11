@@ -23,15 +23,17 @@ public class PaymentServiceImpl implements PaymentService {
         this.paymentDao = paymentDao;
     }
     @Override
-    public PaymentResponseDto getPayment(int docID) {
-        Payment payment = paymentDao.selectPayment(docID);
+    public PaymentResponseDto getPayment(int pay_id) {
+        Payment payment = paymentDao.selectPayment(pay_id);
 
         PaymentResponseDto paymentResponseDto = new PaymentResponseDto();
 
-        paymentResponseDto.setDoc_ID(payment.getDocID());
-        paymentResponseDto.setAccNum(payment.getAccNum());
-        paymentResponseDto.setCust_ID(payment.getCustID());
+        paymentResponseDto.setPayID(payment.getPayID());
+        paymentResponseDto.setDocID(payment.getDocID());
         paymentResponseDto.setDate(payment.getDate());
+        paymentResponseDto.setAccNum(payment.getAccNum());
+        paymentResponseDto.setChargerNum(payment.getChargerNum());
+        paymentResponseDto.setCustID(payment.getCustID());
 
         return paymentResponseDto;
     }
@@ -39,38 +41,44 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public PaymentResponseDto savePayment(PaymentDto paymentDto) {
         Payment payment = new Payment();
-        payment.setAccNum(paymentDto.getAccNum());
-        payment.setCustID(paymentDto.getCustID());
+        payment.setDocID(paymentDto.getDocID());
         payment.setDate(paymentDto.getDate());
+        payment.setAccNum(paymentDto.getAccNum());
+        payment.setChargerNum(paymentDto.getChargerNum());
+        payment.setCustID(paymentDto.getCustID());
 
         Payment savedPayment = paymentDao.insertPayment(payment);
 
         PaymentResponseDto paymentResponseDto = new PaymentResponseDto();
 
-        paymentResponseDto.setDoc_ID(savedPayment.getDocID());
-        paymentResponseDto.setAccNum(savedPayment.getAccNum());
-        paymentResponseDto.setCust_ID(savedPayment.getCustID());
+        paymentResponseDto.setPayID(savedPayment.getPayID());
+        paymentResponseDto.setDocID(savedPayment.getDocID());
         paymentResponseDto.setDate(savedPayment.getDate());
+        paymentResponseDto.setAccNum(savedPayment.getAccNum());
+        paymentResponseDto.setChargerNum(savedPayment.getChargerNum());
+        paymentResponseDto.setCustID(savedPayment.getCustID());
 
         return paymentResponseDto;
     }
 
     @Override
-    public PaymentResponseDto changePaymentInfo(int docID, int accident_NM, int custID, String date) throws Exception {
-        Payment changedPayment = paymentDao.updatePaymentInfo(docID, accident_NM, custID, date);
+    public PaymentResponseDto changePaymentInfo(int pay_id, int DocID, String date, int accNum, int chargerNum, int custID) throws Exception {
+        Payment changedPayment = paymentDao.updatePaymentInfo(pay_id, DocID, date, accNum, chargerNum, custID);
 
         PaymentResponseDto paymentResponseDto = new PaymentResponseDto();
 
-        paymentResponseDto.setDoc_ID(changedPayment.getDocID());
-        paymentResponseDto.setAccNum(changedPayment.getAccNum());
-        paymentResponseDto.setCust_ID(changedPayment.getCustID());
+        paymentResponseDto.setPayID(changedPayment.getPayID());
+        paymentResponseDto.setDocID(changedPayment.getDocID());
         paymentResponseDto.setDate(changedPayment.getDate());
+        paymentResponseDto.setAccNum(changedPayment.getAccNum());
+        paymentResponseDto.setChargerNum(changedPayment.getChargerNum());
+        paymentResponseDto.setCustID(changedPayment.getCustID());
 
         return paymentResponseDto;
     }
 
     @Override
-    public void deletePayment(int docID) throws Exception {
-        paymentDao.deletePayment(docID);
+    public void deletePayment(int pay_id) throws Exception {
+        paymentDao.deletePayment(pay_id);
     }
 }

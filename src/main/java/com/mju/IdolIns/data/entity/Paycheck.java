@@ -14,7 +14,10 @@ public class Paycheck {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int docID;
+    private int PayCheckID;
+
+    @Column(nullable = false)
+    private int payID;
 
     @Column(nullable = false)
     private int paymentReportOK;

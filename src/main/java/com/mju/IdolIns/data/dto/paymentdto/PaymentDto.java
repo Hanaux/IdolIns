@@ -8,8 +8,10 @@ import lombok.*;
 @ToString
 @Builder
 public class PaymentDto {
-    private int AccNum;
-    private int CustID;
-    private String Date;
+    private int DocID;
+    private String date;
+    private int accNum;
+    private int chargerNum;
+    private int custID;
 
 }

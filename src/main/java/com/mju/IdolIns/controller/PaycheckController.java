@@ -52,7 +52,7 @@ public class PaycheckController {
     public ResponseEntity<PaycheckResponseDto> changePaycheck(
         @RequestBody ChangePaycheckInfoDto changePaycheckInfoDto) throws Exception{
         PaycheckResponseDto paycheckResponseDto = paycheckService.changePaycheckInfo(
-                changePaycheckInfoDto.getDocID(), changePaycheckInfoDto.getPaymentReportOK(), changePaycheckInfoDto.getPaymentCompleted()
+                changePaycheckInfoDto.getPayCheckID(), changePaycheckInfoDto.getPayID(), changePaycheckInfoDto.getPaymentReportOK(), changePaycheckInfoDto.getPaymentCompleted()
         );
 
         return ResponseEntity.status(HttpStatus.OK).body(paycheckResponseDto);

@@ -14,16 +14,22 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int docID;
+    private int payID;
+
+    @Column(nullable = false)
+    private int DocID;
+
+    @Column(nullable = false)
+    private String date ;
 
     @Column(nullable = false)
     private int accNum;
 
     @Column(nullable = false)
-    private int custID;
+    private int chargerNum ;
 
     @Column(nullable = false)
-    private String date;
+    private int custID ;
 
 
 }

@@ -8,6 +8,7 @@ import lombok.*;
 @ToString
 @Builder
 public class PaycheckDto {
+    private int payID;
     private int paymentReportOK;
     private int paymentCompleted;
 

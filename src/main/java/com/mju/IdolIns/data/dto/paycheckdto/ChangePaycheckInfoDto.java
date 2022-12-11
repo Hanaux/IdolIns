@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter@Setter
 public class ChangePaycheckInfoDto {
-    private int docID;
+    private int PayCheckID;
+    private int payID;
     private int paymentReportOK;
     private int paymentCompleted;
 }

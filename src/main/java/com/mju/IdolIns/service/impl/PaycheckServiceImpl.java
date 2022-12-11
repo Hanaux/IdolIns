@@ -23,12 +23,13 @@ public class PaycheckServiceImpl implements PaycheckService {
         this.paycheckDao = paycheckDao;
     }
     @Override
-    public PaycheckResponseDto getPaycheck(int docID) {
-        Paycheck paycheck = paycheckDao.selectPaycheck(docID);
+    public PaycheckResponseDto getPaycheck(int PayCheckID) {
+        Paycheck paycheck = paycheckDao.selectPaycheck(PayCheckID);
 
         PaycheckResponseDto paycheckResponseDto = new PaycheckResponseDto();
 
-        paycheckResponseDto.setDoc_ID(paycheck.getDocID());
+        paycheckResponseDto.setPayCheckID(paycheck.getPayCheckID());
+        paycheckResponseDto.setPayID(paycheck.getPayID());
         paycheckResponseDto.setPaymentReportOK(paycheck.getPaymentReportOK());
         paycheckResponseDto.setPaymentCompleted(paycheck.getPaymentCompleted());
 
@@ -38,6 +39,7 @@ public class PaycheckServiceImpl implements PaycheckService {
     @Override
     public PaycheckResponseDto savePaycheck(PaycheckDto paycheckDto) {
         Paycheck paycheck = new Paycheck();
+        paycheck.setPayID(paycheckDto.getPayID());
         paycheck.setPaymentReportOK(paycheckDto.getPaymentReportOK());
         paycheck.setPaymentCompleted(paycheckDto.getPaymentCompleted());
 
@@ -45,7 +47,8 @@ public class PaycheckServiceImpl implements PaycheckService {
 
         PaycheckResponseDto paycheckResponseDto = new PaycheckResponseDto();
 
-        paycheckResponseDto.setDoc_ID(savedPaycheck.getDocID());
+        paycheckResponseDto.setPayCheckID(savedPaycheck.getPayCheckID());
+        paycheckResponseDto.setPayID(savedPaycheck.getPayID());
         paycheckResponseDto.setPaymentReportOK(savedPaycheck.getPaymentReportOK());
         paycheckResponseDto.setPaymentCompleted(savedPaycheck.getPaymentCompleted());
 
@@ -53,12 +56,13 @@ public class PaycheckServiceImpl implements PaycheckService {
     }
 
     @Override
-    public PaycheckResponseDto changePaycheckInfo(int docID, int paymentReportOK, int paymentCompleted) throws Exception {
-        Paycheck changedPaycheck = paycheckDao.updatePaycheckInfo(docID, paymentReportOK, paymentCompleted);
+    public PaycheckResponseDto changePaycheckInfo(int PayCheckID, int payID, int paymentReportOK, int paymentCompleted) throws Exception {
+        Paycheck changedPaycheck = paycheckDao.updatePaycheckInfo(PayCheckID, payID, paymentReportOK, paymentCompleted);
 
         PaycheckResponseDto paycheckResponseDto = new PaycheckResponseDto();
 
-        paycheckResponseDto.setDoc_ID(changedPaycheck.getDocID());
+        paycheckResponseDto.setPayCheckID(changedPaycheck.getPayCheckID());
+        paycheckResponseDto.setPayID(changedPaycheck.getPayID());
         paycheckResponseDto.setPaymentReportOK(changedPaycheck.getPaymentReportOK());
         paycheckResponseDto.setPaymentCompleted(changedPaycheck.getPaymentCompleted());
 
@@ -66,7 +70,7 @@ public class PaycheckServiceImpl implements PaycheckService {
     }
 
     @Override
-    public void deletePaycheck(int docID) throws Exception {
-        paycheckDao.deletePaycheck(docID);
+    public void deletePaycheck(int PayCheckID) throws Exception {
+        paycheckDao.deletePaycheck(PayCheckID);
     }
 }

@@ -28,22 +28,24 @@ public class PaymentDaoImpl implements PaymentDao {
     }
 
     @Override
-    public Payment selectPayment(int docID) {
-        Payment selectedPayment = paymentRepository.getById(docID);
+    public Payment selectPayment(int pay_id) {
+        Payment selectedPayment = paymentRepository.getById(pay_id);
         return selectedPayment;
     }
 
     @Override
-    public Payment updatePaymentInfo(int docID, int accNum, int custID,  String date) throws Exception {
-        Optional<Payment> selectedPayment = paymentRepository.findById(docID);
+    public Payment updatePaymentInfo(int pay_id, int DocID, String date, int accNum, int chargerNum, int custID) throws Exception {
+        Optional<Payment> selectedPayment = paymentRepository.findById(pay_id);
 
         Payment updatePayment;
         if(selectedPayment.isPresent()) {
             Payment payment = selectedPayment.get();
 
-            payment.setAccNum(accNum);
-            payment.setCustID(custID);
+            payment.setDocID(DocID);
             payment.setDate(date);
+            payment.setAccNum(accNum);
+            payment.setChargerNum(chargerNum);
+            payment.setCustID(custID);
 
             updatePayment = paymentRepository.save(payment);
         }else {
@@ -53,8 +55,8 @@ public class PaymentDaoImpl implements PaymentDao {
     }
 
     @Override
-    public void deletePayment(int docID) throws Exception {
-    Optional<Payment> selectedPayment = paymentRepository.findById(docID);
+    public void deletePayment(int pay_id) throws Exception {
+    Optional<Payment> selectedPayment = paymentRepository.findById(pay_id);
 
     if(selectedPayment.isPresent()){
         Payment payment = selectedPayment.get();

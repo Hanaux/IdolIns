@@ -6,8 +6,8 @@ import com.mju.IdolIns.data.dto.paymentdto.PaymentDto;
 import com.mju.IdolIns.data.dto.paymentdto.PaymentResponseDto;
 
 public interface PaycheckService {
-    PaycheckResponseDto getPaycheck(int doc_id);
+    PaycheckResponseDto getPaycheck(int PayCheckID);
     PaycheckResponseDto savePaycheck(PaycheckDto paycheckDto);
-    PaycheckResponseDto changePaycheckInfo(int docID, int paymentReportOK, int paymentCompleted) throws Exception;
-    void deletePaycheck(int doc_id) throws Exception;
+    PaycheckResponseDto changePaycheckInfo(int PayCheckID, int payID, int paymentReportOK, int paymentCompleted) throws Exception;
+    void deletePaycheck(int PayCheckID) throws Exception;
 }

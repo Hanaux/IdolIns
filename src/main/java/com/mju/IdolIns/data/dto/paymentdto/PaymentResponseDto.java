@@ -5,9 +5,11 @@ import lombok.Setter;
 
 @Getter@Setter
 public class PaymentResponseDto {
-    private int Doc_ID;
-    private int AccNum;
-    private int Cust_ID;
-    private String Date;
+    private int PayID;
+    private int DocID;
+    private String date;
+    private int accNum;
+    private int chargerNum;
+    private int custID;
 
 }

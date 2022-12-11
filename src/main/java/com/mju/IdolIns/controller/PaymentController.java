@@ -52,8 +52,8 @@ public class PaymentController {
     public ResponseEntity<PaymentResponseDto> changePayment(
         @RequestBody ChangePaymentInfoDto changePaymentInfoDto) throws Exception{
         PaymentResponseDto paymentResponseDto = paymentService.changePaymentInfo(
-                changePaymentInfoDto.getDocID(), changePaymentInfoDto.getAccNum(), changePaymentInfoDto.getCustID(),
-                changePaymentInfoDto.getDate()
+                changePaymentInfoDto.getPayID(), changePaymentInfoDto.getDocID(), changePaymentInfoDto.getDate(),
+                changePaymentInfoDto.getAccNum(), changePaymentInfoDto.getChargerNum(), changePaymentInfoDto.getCustID()
         );
 
         return ResponseEntity.status(HttpStatus.OK).body(paymentResponseDto);

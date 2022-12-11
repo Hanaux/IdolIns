@@ -14,6 +14,9 @@ public class Calculation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int docID;
+
+    @Column(nullable = false)
     private int accNum;
 
     @Column(nullable = false)
@@ -22,11 +25,10 @@ public class Calculation {
     @Column(nullable = false)
     private int decisionCompensationHuman;
 
+
+
 //    @Column(nullable = false)
 //    private int custID;
-//
-//    @Column(nullable = false)
-//    private int docID;
 //
 //    @Column(nullable = false)
 //    private String date;
