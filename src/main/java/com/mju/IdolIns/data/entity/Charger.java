@@ -14,16 +14,18 @@ public class Charger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int accNum;
+    private int chargerNum;
 
     @Column(nullable = false)
-    private int insID;
+    private int insid;
+
+    @Column(nullable = false)
+    private int custid;
 
     @Column(nullable = false)
     private int lossAmountHuman;
 
     @Column(nullable = false)
     private int lossAmountProperty;
-
 
 }

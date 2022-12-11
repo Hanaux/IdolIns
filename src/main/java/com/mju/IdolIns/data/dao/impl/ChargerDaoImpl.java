@@ -31,14 +31,15 @@ public class ChargerDaoImpl implements ChargerDao {
     }
 
     @Override
-    public Charger updateChargerInfo(int accident_NM, int ins_ID, int lossAmountHuman, int lossAmountProperty) throws Exception {
+    public Charger updateChargerInfo(int accident_NM, int ins_ID, int custID, int lossAmountHuman, int lossAmountProperty) throws Exception {
         Optional<Charger> selectedCharger = chargerRepository.findById(accident_NM);
 
         Charger updateCharger;
         if(selectedCharger.isPresent()) {
             Charger charger = selectedCharger.get();
 
-            charger.setInsID(ins_ID);
+            charger.setInsid(ins_ID);
+            charger.setCustid(custID);
             charger.setLossAmountHuman(lossAmountHuman);
             charger.setLossAmountProperty(lossAmountProperty);
 

@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 public class ChargerDto {
     private int Ins_ID;
+    private int custID;
     private int LossAmountHuman;
     private int LossAmountProperty;
 

@@ -48,7 +48,8 @@ public class ChargerController {
     public ResponseEntity<ChargerResponseDto> changeCharger(
         @RequestBody ChangeChargerInfoDto changeChargerInfoDto) throws Exception{
         ChargerResponseDto chargerResponseDto = chargerService.changeChargerInfo(
-                changeChargerInfoDto.getAcc_NM(), changeChargerInfoDto.getIns_ID(), changeChargerInfoDto.getLossAmountHuman(),
+                changeChargerInfoDto.getChargerNum(), changeChargerInfoDto.getIns_ID(), changeChargerInfoDto.getCustID(),
+                changeChargerInfoDto.getLossAmountHuman(),
                 changeChargerInfoDto.getLossAmountProperty()
         );
 

@@ -39,5 +39,4 @@ public class Insurance {
 
     @Column(nullable = false)
     private int permission;
-
 }

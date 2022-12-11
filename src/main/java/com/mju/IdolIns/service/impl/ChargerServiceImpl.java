@@ -18,13 +18,14 @@ public class ChargerServiceImpl implements ChargerService {
         this.chargerDao = chargerDao;
     }
     @Override
-    public ChargerResponseDto getCharger(int accident_NM) {
-        Charger charger = chargerDao.selectCharger(accident_NM);
+    public ChargerResponseDto getCharger(int ChargerNum) {
+        Charger charger = chargerDao.selectCharger(ChargerNum);
 
         ChargerResponseDto chargerResponseDto = new ChargerResponseDto();
 
-        chargerResponseDto.setAccident_NM(charger.getAccNum());
-        chargerResponseDto.setIns_ID(charger.getInsID());
+        chargerResponseDto.setChargerNum(charger.getChargerNum());
+        chargerResponseDto.setIns_ID(charger.getInsid());
+        chargerResponseDto.setCustID(charger.getCustid());
         chargerResponseDto.setLossAmountHuman(charger.getLossAmountHuman());
         chargerResponseDto.setLossAmountProperty(charger.getLossAmountProperty());
 
@@ -34,7 +35,8 @@ public class ChargerServiceImpl implements ChargerService {
     @Override
     public ChargerResponseDto saveCharger(ChargerDto chargerDto) {
         Charger charger = new Charger();
-        charger.setInsID(chargerDto.getIns_ID());
+        charger.setInsid(chargerDto.getIns_ID());
+        charger.setCustid(chargerDto.getCustID());
         charger.setLossAmountHuman(chargerDto.getLossAmountHuman());
         charger.setLossAmountProperty(chargerDto.getLossAmountProperty());
 
@@ -42,8 +44,9 @@ public class ChargerServiceImpl implements ChargerService {
 
         ChargerResponseDto chargerResponseDto = new ChargerResponseDto();
 
-        chargerResponseDto.setAccident_NM(savedCharger.getAccNum());
-        chargerResponseDto.setIns_ID(savedCharger.getInsID());
+        chargerResponseDto.setChargerNum(savedCharger.getChargerNum());
+        chargerResponseDto.setIns_ID(savedCharger.getInsid());
+        chargerResponseDto.setCustID(savedCharger.getCustid());
         chargerResponseDto.setLossAmountHuman(savedCharger.getLossAmountHuman());
         chargerResponseDto.setLossAmountProperty(savedCharger.getLossAmountProperty());
 
@@ -51,13 +54,14 @@ public class ChargerServiceImpl implements ChargerService {
     }
 
     @Override
-    public ChargerResponseDto changeChargerInfo(int accident_NM, int ins_ID, int lossAmountHuman, int lossAmountProperty) throws Exception {
-        Charger changedCharger = chargerDao.updateChargerInfo(accident_NM, ins_ID, lossAmountHuman, lossAmountProperty);
+    public ChargerResponseDto changeChargerInfo(int ChargerNum, int ins_ID, int custID, int lossAmountHuman, int lossAmountProperty) throws Exception {
+        Charger changedCharger = chargerDao.updateChargerInfo(ChargerNum, ins_ID, custID, lossAmountHuman, lossAmountProperty);
 
         ChargerResponseDto chargerResponseDto = new ChargerResponseDto();
 
-        chargerResponseDto.setAccident_NM(changedCharger.getAccNum());
-        chargerResponseDto.setIns_ID(changedCharger.getInsID());
+        chargerResponseDto.setChargerNum(changedCharger.getChargerNum());
+        chargerResponseDto.setIns_ID(changedCharger.getInsid());
+        chargerResponseDto.setCustID(changedCharger.getCustid());
         chargerResponseDto.setLossAmountHuman(changedCharger.getLossAmountHuman());
         chargerResponseDto.setLossAmountProperty(changedCharger.getLossAmountProperty());
 

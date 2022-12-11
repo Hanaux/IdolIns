@@ -5,8 +5,9 @@ import lombok.Setter;
 
 @Getter@Setter
 public class ChargerResponseDto {
-    private int Accident_NM;
+    private int chargerNum;
     private int Ins_ID;
+    private int custID;
     private int LossAmountHuman;
     private int LossAmountProperty;
 
