@@ -62,7 +62,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customerResponseDto;
     }
 
-    @Override
+    @Override@Transactional
     public CustomerResponseDto changeCustomerName(int cust_ID, String cust_NM) throws Exception {
         Customer changedCustomer = customerDAO.updateCustomerName(cust_ID, cust_NM);
 

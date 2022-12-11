@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface CustomerDao {
     Customer insertCustomer(Customer customer);
     Customer selectCustomer(int custId) throws CustomException;
-    Customer updateCustomerName(int custId, String custName) throws Exception;
-    void deleteCustomer(int custId) throws Exception;
+    Customer updateCustomerName(int custId, String custName) throws CustomException;
+    void deleteCustomer(int custId) throws CustomException;
 }

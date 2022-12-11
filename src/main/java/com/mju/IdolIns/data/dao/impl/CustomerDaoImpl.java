@@ -38,31 +38,23 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public Customer updateCustomerName(int custId, String custName) throws Exception {
-        Optional<Customer> selectedCustomer = customerRepository.findById(custId);
+    public Customer updateCustomerName(int custId, String custName) throws CustomException {
+        Customer selectedCustomer = Optional.of(customerRepository.getById(custId))
+                .orElseThrow(()-> new CustomException(MEMBER_NOT_FOUND));
 
         Customer updatedCustomer;
-        if(selectedCustomer.isPresent()) {
-            Customer customer = selectedCustomer.get();
-
-            customer.setCustName(custName);
-
-            updatedCustomer = customerRepository.save(customer);
-        }else {
-            throw new Exception();
-        }
+        Customer customer = selectedCustomer;
+        customer.setCustName(custName);
+        updatedCustomer = customerRepository.save(customer);
          return updatedCustomer;
     }
 
     @Override
-    public void deleteCustomer(int custId) throws Exception {
-    Optional<Customer> selectedCustomer = customerRepository.findById(custId);
+    public void deleteCustomer(int custId) throws CustomException {
+    Optional<Customer> selectedCustomer = Optional.ofNullable(customerRepository.findById(custId)
+            .orElseThrow(() -> new CustomException(MEMBER_NOT_FOUND)));
 
-    if(selectedCustomer.isPresent()){
         Customer customer = selectedCustomer.get();
         customerRepository.delete(customer);
-    } else {
-        throw new Exception();
-    }
     }
 }
