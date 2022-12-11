@@ -8,6 +8,7 @@ import lombok.*;
 @ToString
 @Builder
 public class CalculationDto {
+    private int Accident_NM;
     private int DecisionCompensationProperty;
     private int DecisionCompensationHuman;
 

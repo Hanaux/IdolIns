@@ -52,7 +52,7 @@ public class CalculationController {
     public ResponseEntity<CalculationResponseDto> changeCalculation(
         @RequestBody ChangeCalculationInfoDto changeCalculationInfoDto) throws Exception{
         CalculationResponseDto calculationResponseDto = calculationService.changeCalculationInfo(
-                changeCalculationInfoDto.getAcc_NM(), changeCalculationInfoDto.getDecisionCompensationProperty(),
+                changeCalculationInfoDto.getDocID(), changeCalculationInfoDto.getAcc_NM(), changeCalculationInfoDto.getDecisionCompensationProperty(),
                 changeCalculationInfoDto.getDecisionCompensationHuman()
         );
 

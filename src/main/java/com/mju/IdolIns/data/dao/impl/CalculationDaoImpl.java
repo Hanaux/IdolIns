@@ -28,19 +28,20 @@ public class CalculationDaoImpl implements CalculationDao {
     }
 
     @Override
-    public Calculation selectCalculation(int accident_NM) {
-        Calculation selectedCalculation = calculationRepository.getById(accident_NM);
+    public Calculation selectCalculation(int docID) {
+        Calculation selectedCalculation = calculationRepository.getById(docID);
         return selectedCalculation;
     }
 
     @Override
-    public Calculation updateCalculationInfo(int accident_NM, int decisionCompensationProperty, int decisionCompensationHuman) throws Exception {
-        Optional<Calculation> selectedCalculation = calculationRepository.findById(accident_NM);
+    public Calculation updateCalculationInfo(int docID, int accident_NM, int decisionCompensationProperty, int decisionCompensationHuman) throws Exception {
+        Optional<Calculation> selectedCalculation = calculationRepository.findById(docID);
 
         Calculation updateCalculation;
         if(selectedCalculation.isPresent()) {
             Calculation calculation = selectedCalculation.get();
 
+            calculation.setAccNum(accident_NM);
             calculation.setDecisionCompensationProperty(decisionCompensationProperty);
             calculation.setDecisionCompensationHuman(decisionCompensationHuman);
 //            charger.setCustID(cust_ID);
@@ -57,8 +58,8 @@ public class CalculationDaoImpl implements CalculationDao {
     }
 
     @Override
-    public void deleteCalculation(int accident_NM) throws Exception {
-    Optional<Calculation> selectedCalculation = calculationRepository.findById(accident_NM);
+    public void deleteCalculation(int docID) throws Exception {
+    Optional<Calculation> selectedCalculation = calculationRepository.findById(docID);
 
     if(selectedCalculation.isPresent()){
         Calculation calculation = selectedCalculation.get();

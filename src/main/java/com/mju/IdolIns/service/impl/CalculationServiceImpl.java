@@ -24,11 +24,12 @@ public class CalculationServiceImpl implements CalculationService {
     }
 
     @Override
-    public CalculationResponseDto getCalculation(int accident_NM) {
-        Calculation calculation = calculationDao.selectCalculation(accident_NM);
+    public CalculationResponseDto getCalculation(int docID) {
+        Calculation calculation = calculationDao.selectCalculation(docID);
 
         CalculationResponseDto calculationResponseDto = new CalculationResponseDto();
 
+        calculationResponseDto.setDocID(calculation.getDocID());
         calculationResponseDto.setAccident_NM(calculation.getAccNum());
         calculationResponseDto.setDecisionCompensationProperty(calculation.getDecisionCompensationProperty());
         calculationResponseDto.setDecisionCompensationHuman(calculation.getDecisionCompensationHuman());
@@ -39,6 +40,7 @@ public class CalculationServiceImpl implements CalculationService {
     @Override
     public CalculationResponseDto saveCalculation(CalculationDto calculationDto) {
         Calculation calculation = new Calculation();
+        calculation.setAccNum(calculationDto.getAccident_NM());
         calculation.setDecisionCompensationProperty(calculationDto.getDecisionCompensationProperty());
         calculation.setDecisionCompensationHuman(calculationDto.getDecisionCompensationHuman());
 
@@ -46,6 +48,7 @@ public class CalculationServiceImpl implements CalculationService {
 
         CalculationResponseDto calculationResponseDto = new CalculationResponseDto();
 
+        calculationResponseDto.setDocID(savedCalculation.getDocID());
         calculationResponseDto.setAccident_NM(savedCalculation.getAccNum());
         calculationResponseDto.setDecisionCompensationProperty(savedCalculation.getDecisionCompensationProperty());
         calculationResponseDto.setDecisionCompensationHuman(savedCalculation.getDecisionCompensationHuman());
@@ -54,11 +57,12 @@ public class CalculationServiceImpl implements CalculationService {
     }
 
     @Override
-    public CalculationResponseDto changeCalculationInfo(int accident_NM, int decisionCompensationProperty, int decisionCompensationHuman) throws Exception {
-        Calculation changedCalculation = calculationDao.updateCalculationInfo(accident_NM, decisionCompensationProperty, decisionCompensationHuman);
+    public CalculationResponseDto changeCalculationInfo(int docID, int accident_NM, int decisionCompensationProperty, int decisionCompensationHuman) throws Exception {
+        Calculation changedCalculation = calculationDao.updateCalculationInfo(docID, accident_NM, decisionCompensationProperty, decisionCompensationHuman);
 
         CalculationResponseDto calculationResponseDto = new CalculationResponseDto();
 
+        calculationResponseDto.setDocID(changedCalculation.getDocID());
         calculationResponseDto.setAccident_NM(changedCalculation.getAccNum());
         calculationResponseDto.setDecisionCompensationProperty(changedCalculation.getDecisionCompensationProperty());
         calculationResponseDto.setDecisionCompensationHuman(changedCalculation.getDecisionCompensationHuman());
@@ -67,7 +71,7 @@ public class CalculationServiceImpl implements CalculationService {
     }
 
     @Override
-    public void deleteCalculation(int accident_NM) throws Exception {
-        calculationDao.deleteCalculation(accident_NM);
+    public void deleteCalculation(int docID) throws Exception {
+        calculationDao.deleteCalculation(docID);
     }
 }
