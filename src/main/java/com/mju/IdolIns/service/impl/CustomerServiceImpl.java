@@ -4,9 +4,15 @@ import com.mju.IdolIns.data.dao.CustomerDao;
 import com.mju.IdolIns.data.dto.customerdto.CustomerDto;
 import com.mju.IdolIns.data.dto.customerdto.CustomerResponseDto;
 import com.mju.IdolIns.data.entity.Customer;
+import com.mju.IdolIns.exception.CustomException;
 import com.mju.IdolIns.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+
+import static com.mju.IdolIns.exception.ErrorCode.MEMBER_NOT_FOUND;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -17,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerServiceImpl(CustomerDao customerDAO){
         this.customerDAO = customerDAO;
     }
-    @Override
+    @Override@Transactional
     public CustomerResponseDto getCustomer(int cust_ID) {
         Customer customer = customerDAO.selectCustomer(cust_ID);
 

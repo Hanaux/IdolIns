@@ -76,9 +76,7 @@ public class InsuranceController {
                 changeInsurancePermissionDto.getIns_ID(),
                 changeInsurancePermissionDto.getPermission()
         );
-
         return ResponseEntity.status(HttpStatus.OK).body(insuranceResponseDto);
     }
-
 }
 

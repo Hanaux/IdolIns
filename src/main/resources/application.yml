@@ -17,3 +17,11 @@ spring:
       hibernate:
         format_sql:true
 #        ddl-auto:create
+
+server:
+  error:
+    include-exception: false
+    include-message: always
+    include-stacktrace: on_param
+    whitelabel:
+      enabled: true
