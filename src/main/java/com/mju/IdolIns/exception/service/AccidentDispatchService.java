@@ -1,4 +1,4 @@
-package com.mju.IdolIns.service;
+package com.mju.IdolIns.exception.service;
 
 public interface AccidentDispatchService {
     String getCenter(String spot);

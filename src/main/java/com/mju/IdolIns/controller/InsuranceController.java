@@ -4,7 +4,7 @@ import com.mju.IdolIns.data.dto.insurancedto.ChangeInsuranceNameDto;
 import com.mju.IdolIns.data.dto.insurancedto.ChangeInsurancePermissionDto;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceDto;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceResponseDto;
-import com.mju.IdolIns.service.InsuranceService;
+import com.mju.IdolIns.exception.service.InsuranceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

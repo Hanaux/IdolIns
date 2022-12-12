@@ -1,4 +1,4 @@
-package com.mju.IdolIns.service;
+package com.mju.IdolIns.exception.service;
 
 import com.mju.IdolIns.data.dto.paycheckdto.PaycheckDto;
 import com.mju.IdolIns.data.dto.paycheckdto.PaycheckResponseDto;

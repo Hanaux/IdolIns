@@ -5,12 +5,12 @@ import com.mju.IdolIns.data.dto.Contractordto.ContractorDto;
 import com.mju.IdolIns.data.dto.Contractordto.ContractorResponseDto;
 import com.mju.IdolIns.data.dto.customerdto.CustomerResponseDto;
 import com.mju.IdolIns.data.entity.Customer;
-import com.mju.IdolIns.service.CustomerService;
+import com.mju.IdolIns.exception.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.mju.IdolIns.service.ContractorService;
+import com.mju.IdolIns.exception.service.ContractorService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

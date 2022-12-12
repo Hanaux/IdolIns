@@ -3,7 +3,7 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.accidenthandlerdto.AccidentHandlerDto;
 import com.mju.IdolIns.data.dto.accidenthandlerdto.AccidentHandlerResponseDto;
 import com.mju.IdolIns.data.dto.accidenthandlerdto.ChangeAccidentHandlerDto;
-import com.mju.IdolIns.service.AccidentHandlerService;
+import com.mju.IdolIns.exception.service.AccidentHandlerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

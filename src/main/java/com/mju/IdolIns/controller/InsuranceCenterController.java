@@ -3,7 +3,7 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.insurancecenterdto.ChangeInsuranceCenterInfoDto;
 import com.mju.IdolIns.data.dto.insurancecenterdto.InsuranceCenterDto;
 import com.mju.IdolIns.data.dto.insurancecenterdto.InsuranceCenterResponseDto;
-import com.mju.IdolIns.service.InsuranceCenterService;
+import com.mju.IdolIns.exception.service.InsuranceCenterService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

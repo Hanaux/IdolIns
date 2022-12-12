@@ -1,4 +1,4 @@
-package com.mju.IdolIns.service;
+package com.mju.IdolIns.exception.service;
 
 import com.mju.IdolIns.data.dto.insurancecenterdto.InsuranceCenterDto;
 import com.mju.IdolIns.data.dto.insurancecenterdto.InsuranceCenterResponseDto;

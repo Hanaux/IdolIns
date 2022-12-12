@@ -1,10 +1,10 @@
-package com.mju.IdolIns.service.impl;
+package com.mju.IdolIns.exception.service.impl;
 
 import com.mju.IdolIns.data.dao.AccidentDao;
 import com.mju.IdolIns.data.dto.accidentdto.AccidentDto;
 import com.mju.IdolIns.data.dto.accidentdto.AccidentResponseDto;
 import com.mju.IdolIns.data.entity.Accident;
-import com.mju.IdolIns.service.AccidentService;
+import com.mju.IdolIns.exception.service.AccidentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
