@@ -3,7 +3,7 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.customerdto.ChangeCustomerNameDto;
 import com.mju.IdolIns.data.dto.customerdto.CustomerDto;
 import com.mju.IdolIns.data.dto.customerdto.CustomerResponseDto;
-import com.mju.IdolIns.exception.service.CustomerService;
+import com.mju.IdolIns.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +24,7 @@ public class CustomerController{
     }
 
     @GetMapping(value = "/custinfo/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "회원정보 조회 메서드", description = "회원정보 조회 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> getCustomer(
             @Parameter @PathVariable int id) {
@@ -34,7 +34,7 @@ public class CustomerController{
     }
 
     @PostMapping(value = "/custinfo/enrollment")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "회원정보 등록 메서드", description = "회원정보 등록 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> createCustomer(@RequestBody CustomerDto customerDto) {
         CustomerResponseDto customerResponseDto = customerService.saveCustomer(customerDto);
@@ -43,7 +43,7 @@ public class CustomerController{
     }
 
     @PutMapping(value = "/custinfo/modification")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "회원 이름 수정 메서드", description = "회원정보 이름 수정 메서드입니다.")
     public ResponseEntity<CustomerResponseDto> changeCustomerName(
         @RequestBody ChangeCustomerNameDto changeCustomerNameDto) throws Exception{
@@ -56,7 +56,7 @@ public class CustomerController{
     }
 
     @DeleteMapping(value = "/custinfo/deletion/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "회원 정보 삭제 메서드", description = "회원정보 삭제 메서드입니다.")
     public ResponseEntity<String> deleteCustomer(
             @Parameter @PathVariable

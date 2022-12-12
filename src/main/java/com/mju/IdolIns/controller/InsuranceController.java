@@ -4,7 +4,7 @@ import com.mju.IdolIns.data.dto.insurancedto.ChangeInsuranceNameDto;
 import com.mju.IdolIns.data.dto.insurancedto.ChangeInsurancePermissionDto;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceDto;
 import com.mju.IdolIns.data.dto.insurancedto.InsuranceResponseDto;
-import com.mju.IdolIns.exception.service.InsuranceService;
+import com.mju.IdolIns.service.InsuranceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,7 +25,7 @@ public class InsuranceController {
     }
 
     @GetMapping(value = "/insinfo/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "보험정보 조회 메서드", description = "보험정보 조회 메서드입니다.")
     public ResponseEntity<InsuranceResponseDto> getInsurance(
             @Parameter @PathVariable int id) {
@@ -35,7 +35,7 @@ public class InsuranceController {
     }
 
     @PostMapping(value = "/insinfo/enrollment")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "보험정보 등록 메서드", description = "보험정보 등록 메서드입니다.")
     public ResponseEntity<InsuranceResponseDto> createInsurance(@RequestBody InsuranceDto insuranceDto) {
         InsuranceResponseDto insuranceResponseDto = insuranceService.saveInsurance(insuranceDto);
@@ -44,7 +44,7 @@ public class InsuranceController {
     }
 
     @PutMapping(value = "/insinfo/modification")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "보험 이름 수정 메서드", description = "보험정보 이름 수정 메서드입니다.")
     public ResponseEntity<InsuranceResponseDto> changeCustomerName(
         @RequestBody ChangeInsuranceNameDto changeInsuranceNameDto) throws Exception{
@@ -57,7 +57,7 @@ public class InsuranceController {
     }
 
     @DeleteMapping(value = "/insinfo/deletion/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "보험 정보 삭제 메서드", description = "보험정보 삭제 메서드입니다.")
     public ResponseEntity<String> deleteInsurance(
             @Parameter @PathVariable
@@ -68,7 +68,7 @@ public class InsuranceController {
     }
 
     @PutMapping(value = "/insinfo/permission")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "보험 허가 변경 메서드", description = "보험허가 변경 메서드입니다.")
     public ResponseEntity<InsuranceResponseDto> changeCustomerPermission(
             @RequestBody ChangeInsurancePermissionDto changeInsurancePermissionDto)  throws Exception {

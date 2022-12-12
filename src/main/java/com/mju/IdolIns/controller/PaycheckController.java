@@ -3,7 +3,7 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.paycheckdto.ChangePaycheckInfoDto;
 import com.mju.IdolIns.data.dto.paycheckdto.PaycheckDto;
 import com.mju.IdolIns.data.dto.paycheckdto.PaycheckResponseDto;
-import com.mju.IdolIns.exception.service.PaycheckService;
+import com.mju.IdolIns.service.PaycheckService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +24,7 @@ public class PaycheckController {
     }
 
     @GetMapping(value = "/paycheckinfo/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "지급확인정보 조회 메서드", description = "지급확인정보 조회 메서드입니다.")
     public ResponseEntity<PaycheckResponseDto> getPaycheck(
             @Parameter @PathVariable int id) {
@@ -34,7 +34,7 @@ public class PaycheckController {
     }
 
     @PostMapping(value = "/paycheckinfo/enrollment")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "지급확인정보 등록 메서드", description = "지급확인정보 등록 메서드입니다.")
     public ResponseEntity<PaycheckResponseDto> createPaycheck(@RequestBody PaycheckDto paycheckDto) {
         PaycheckResponseDto paycheckResponseDto = paycheckService.savePaycheck(paycheckDto);
@@ -43,7 +43,7 @@ public class PaycheckController {
     }
 
     @PutMapping(value = "/paycheckinfo/modification")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "지급확인 정보 수정 메서드", description = "지급확인정보 수정 메서드입니다.")
     public ResponseEntity<PaycheckResponseDto> changePaycheck(
         @RequestBody ChangePaycheckInfoDto changePaycheckInfoDto) throws Exception{
@@ -55,7 +55,7 @@ public class PaycheckController {
     }
 
     @DeleteMapping(value = "/paycheckinfo/deletion/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "지급확인 정보 삭제 메서드", description = "지급확인정보 삭제 메서드입니다.")
     public ResponseEntity<String> deletePaycheck(
             @Parameter @PathVariable

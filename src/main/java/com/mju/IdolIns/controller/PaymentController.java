@@ -3,7 +3,7 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.paymentdto.ChangePaymentInfoDto;
 import com.mju.IdolIns.data.dto.paymentdto.PaymentDto;
 import com.mju.IdolIns.data.dto.paymentdto.PaymentResponseDto;
-import com.mju.IdolIns.exception.service.PaymentService;
+import com.mju.IdolIns.service.PaymentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +24,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/paymentinfo/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "지급정보 조회 메서드", description = "지급정보 조회 메서드입니다.")
     public ResponseEntity<PaymentResponseDto> getPayment(
             @Parameter @PathVariable int id) {
@@ -34,7 +34,7 @@ public class PaymentController {
     }
 
     @PostMapping(value = "/paymentinfo/enrollment")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "지급정보 등록 메서드", description = "지급정보 등록 메서드입니다.")
     public ResponseEntity<PaymentResponseDto> createPayment(@RequestBody PaymentDto paymentDto) {
         PaymentResponseDto paymentResponseDto = paymentService.savePayment(paymentDto);
@@ -43,7 +43,7 @@ public class PaymentController {
     }
 
     @PutMapping(value = "/paymentinfo/modification")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "지급 정보 수정 메서드", description = "지급정보 수정 메서드입니다.")
     public ResponseEntity<PaymentResponseDto> changePayment(
         @RequestBody ChangePaymentInfoDto changePaymentInfoDto) throws Exception{
@@ -56,7 +56,7 @@ public class PaymentController {
     }
 
     @DeleteMapping(value = "/paymentinfo/deletion/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "청구 정보 삭제 메서드", description = "청구정보 삭제 메서드입니다.")
     public ResponseEntity<String> deletePayment(
             @Parameter @PathVariable

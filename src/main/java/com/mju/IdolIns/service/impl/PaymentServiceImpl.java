@@ -1,10 +1,10 @@
-package com.mju.IdolIns.exception.service.impl;
+package com.mju.IdolIns.service.impl;
 
 import com.mju.IdolIns.data.dao.PaymentDao;
 import com.mju.IdolIns.data.dto.paymentdto.PaymentDto;
 import com.mju.IdolIns.data.dto.paymentdto.PaymentResponseDto;
 import com.mju.IdolIns.data.entity.Payment;
-import com.mju.IdolIns.exception.service.PaymentService;
+import com.mju.IdolIns.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,8 +3,8 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.accidentdto.AccidentDto;
 import com.mju.IdolIns.data.dto.accidentdto.AccidentResponseDto;
 import com.mju.IdolIns.data.dto.accidentdto.ChangeAccidentDto;
-import com.mju.IdolIns.exception.service.AccidentDispatchService;
-import com.mju.IdolIns.exception.service.AccidentService;
+import com.mju.IdolIns.service.AccidentDispatchService;
+import com.mju.IdolIns.service.AccidentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,7 +27,7 @@ public class AccidentController {
     }
 
     @GetMapping(value = "/accidentinfo/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "사고접수 조회 메서드", description = "사고접수 조회 메서드입니다.")
     public ResponseEntity<AccidentResponseDto> getAccident(
             @Parameter@PathVariable int id
@@ -38,7 +38,7 @@ public class AccidentController {
     }
 
     @GetMapping(value = "/accidentinfo/dispatch")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "사고접수 최근접 센터 조회 메서드", description = "사고접수 최근접 센터 조회 메서드입니다.")
     public ResponseEntity<String> getDistpatchCenter(
 //            @RequestBody String accidentSpot
@@ -50,7 +50,7 @@ public class AccidentController {
     }
 
     @PostMapping(value = "/accidentinfo/enrollment")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "사고접수 등록 메서드", description = "사고접수 등록 메서드입니다.")
     public ResponseEntity<AccidentResponseDto> createAccident(@RequestBody AccidentDto accidentDto){
         AccidentResponseDto accidentResponseDto = accidentService.saveAccident(accidentDto);
@@ -59,7 +59,7 @@ public class AccidentController {
     }
 
     @PutMapping(value = "/accidentinfo/modification")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "사고접수 수정 메서드", description = "사고접수 수정 메서드")
     public ResponseEntity<AccidentResponseDto> changeAccident(
             @RequestBody ChangeAccidentDto changeAccidentDto)throws Exception{
@@ -71,7 +71,7 @@ public class AccidentController {
     }
 
     @DeleteMapping(value = "/accidentinfo/deletion/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "사고접수 삭제 메서드", description = "사고접수 삭제 메서드입니다.")
     public ResponseEntity<String> deleteAccident(
             @Parameter @PathVariable int id

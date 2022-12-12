@@ -1,10 +1,10 @@
-package com.mju.IdolIns.exception.service.impl;
+package com.mju.IdolIns.service.impl;
 
 import com.mju.IdolIns.data.dao.CalculationDao;
 import com.mju.IdolIns.data.dto.calculationdto.CalculationDto;
 import com.mju.IdolIns.data.dto.calculationdto.CalculationResponseDto;
 import com.mju.IdolIns.data.entity.Calculation;
-import com.mju.IdolIns.exception.service.CalculationService;
+import com.mju.IdolIns.service.CalculationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@ package com.mju.IdolIns.controller;
 import com.mju.IdolIns.data.dto.insurancecenterdto.ChangeInsuranceCenterInfoDto;
 import com.mju.IdolIns.data.dto.insurancecenterdto.InsuranceCenterDto;
 import com.mju.IdolIns.data.dto.insurancecenterdto.InsuranceCenterResponseDto;
-import com.mju.IdolIns.exception.service.InsuranceCenterService;
+import com.mju.IdolIns.service.InsuranceCenterService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,7 +22,7 @@ public class InsuranceCenterController {
     public InsuranceCenterController(InsuranceCenterService insuranceCenterService) {this.insuranceCenterService = insuranceCenterService;}
 
     @GetMapping(value = "/centerinfo/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "센터정보 조회 메서드", description = "센터정보 조회 메서드입니다.")
     public ResponseEntity<InsuranceCenterResponseDto> getInsuranceCenter(
             @Parameter @PathVariable int id) {
@@ -32,7 +32,7 @@ public class InsuranceCenterController {
     }
 
     @PostMapping(value = "/centerinfo/enrollment")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "센터정보 등록 메서드", description = "센터정보 등록 메서드입니다.")
     public ResponseEntity<InsuranceCenterResponseDto> createInsuranceCenter(@RequestBody InsuranceCenterDto insuranceCenterDto) {
         InsuranceCenterResponseDto insuranceCenterResponseDto = insuranceCenterService.saveInsuranceCenter(insuranceCenterDto);
@@ -41,7 +41,7 @@ public class InsuranceCenterController {
     }
 
     @PutMapping(value = "/centerinfo/modification")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "센터정보 수정 메서드", description = "센터정보 수정 메서드입니다.")
     public ResponseEntity<InsuranceCenterResponseDto> changeInsuranceCenterInfo(
             @RequestBody ChangeInsuranceCenterInfoDto changeInsuranceCenterInfoDto) throws Exception{
@@ -57,7 +57,7 @@ public class InsuranceCenterController {
     }
 
     @DeleteMapping(value = "/centerinfo/deletion/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @Operation(summary = "센터정보 삭제 메서드", description = "센터정보 삭제 메서드입니다.")
     public ResponseEntity<String> deleteInsuranceCenter(
             @Parameter @PathVariable int id
