@@ -6,10 +6,14 @@ import com.mju.IdolIns.data.entity.Calculation;
 import com.mju.IdolIns.data.entity.Charger;
 import com.mju.IdolIns.data.repository.CalculationRepository;
 import com.mju.IdolIns.data.repository.ChargerRepository;
+import com.mju.IdolIns.exception.CustomException;
+import com.mju.IdolIns.exception.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+
+import static com.mju.IdolIns.exception.ErrorCode.*;
 
 @Component
 public class CalculationDaoImpl implements CalculationDao {
@@ -22,50 +26,49 @@ public class CalculationDaoImpl implements CalculationDao {
     }
 
     @Override
-    public Calculation insertCalculation(Calculation calculation) {
-        Calculation savedCalculation = calculationRepository.save(calculation);
+    public Calculation insertCalculation(Calculation calculation) throws CustomException {
+        Calculation savedCalculation = Optional.of(calculationRepository.save(calculation))
+                .orElseThrow(()-> new CustomException(COULD_NOT_SAVE));
         return savedCalculation;
     }
 
     @Override
-    public Calculation selectCalculation(int docID) {
-        Calculation selectedCalculation = calculationRepository.getById(docID);
+    public Calculation selectCalculation(int docID) throws CustomException {
+        Calculation selectedCalculation = Optional.of(calculationRepository.getById(docID))
+                .orElseThrow(()-> new CustomException(DATA_NOT_FOUND));
         return selectedCalculation;
     }
 
     @Override
-    public Calculation updateCalculationInfo(int docID, int accident_NM, int decisionCompensationProperty, int decisionCompensationHuman) throws Exception {
-        Optional<Calculation> selectedCalculation = calculationRepository.findById(docID);
+    public Calculation updateCalculationInfo(int docID, int accident_NM, int decisionCompensationProperty, int decisionCompensationHuman) throws CustomException{
+        Optional<Calculation> selectedCalculation = Optional.ofNullable(calculationRepository.findById(docID))
+                .orElseThrow(()-> new CustomException(DATA_NOT_FOUND));
 
         Calculation updateCalculation;
-        if(selectedCalculation.isPresent()) {
             Calculation calculation = selectedCalculation.get();
 
             calculation.setAccNum(accident_NM);
             calculation.setDecisionCompensationProperty(decisionCompensationProperty);
             calculation.setDecisionCompensationHuman(decisionCompensationHuman);
-//            charger.setCustID(cust_ID);
-//            charger.setDocID(doc_ID);
-//            charger.setDate(date);
-//            charger.setPaymentReportOK(paymentReportOK);
-//            charger.setPaymentCompleted(paymentCompleted);
 
-            updateCalculation = calculationRepository.save(calculation);
-        }else {
-            throw new Exception();
-        }
+            updateCalculation = Optional.of(calculationRepository.save(calculation))
+                    .orElseThrow(()-> new CustomException(COULD_NOT_SAVE));
+
          return updateCalculation;
     }
 
     @Override
-    public void deleteCalculation(int docID) throws Exception {
-    Optional<Calculation> selectedCalculation = calculationRepository.findById(docID);
+    public void deleteCalculation(int docID) throws CustomException{
+    Optional<Calculation> selectedCalculation = Optional.ofNullable(calculationRepository.findById(docID))
+            .orElseThrow(()-> new CustomException(DATA_NOT_FOUND));
 
-    if(selectedCalculation.isPresent()){
         Calculation calculation = selectedCalculation.get();
-        calculationRepository.delete(calculation);
-    } else {
-        throw new Exception();
-    }
+        try {
+            calculationRepository.delete(calculation);
+        } catch (CustomException e){
+            e = new CustomException(COULD_NOT_DELETE);
+        }
+
+
     }
 }

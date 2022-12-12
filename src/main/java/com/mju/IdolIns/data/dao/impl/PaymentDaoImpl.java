@@ -6,10 +6,15 @@ import com.mju.IdolIns.data.entity.Charger;
 import com.mju.IdolIns.data.entity.Payment;
 import com.mju.IdolIns.data.repository.ChargerRepository;
 import com.mju.IdolIns.data.repository.PaymentRepository;
+import com.mju.IdolIns.exception.CustomException;
+import com.mju.IdolIns.exception.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
+
+import static com.mju.IdolIns.exception.ErrorCode.*;
 
 @Component
 public class PaymentDaoImpl implements PaymentDao {
@@ -22,23 +27,25 @@ public class PaymentDaoImpl implements PaymentDao {
     }
 
     @Override
-    public Payment insertPayment(Payment payment) {
-        Payment savedPayment = paymentRepository.save(payment);
+    public Payment insertPayment(Payment payment) throws CustomException {
+        Payment savedPayment = Optional.of(paymentRepository.save(payment))
+                .orElseThrow(()-> new CustomException(COULD_NOT_SAVE));
         return savedPayment;
     }
 
     @Override
-    public Payment selectPayment(int pay_id) {
-        Payment selectedPayment = paymentRepository.getById(pay_id);
+    public Payment selectPayment(int pay_id) throws CustomException{
+        Payment selectedPayment = Optional.of(paymentRepository.getById(pay_id))
+                .orElseThrow(()-> new CustomException(DATA_NOT_FOUND));
         return selectedPayment;
     }
 
     @Override
-    public Payment updatePaymentInfo(int pay_id, int DocID, String date, int accNum, int chargerNum, int custID) throws Exception {
-        Optional<Payment> selectedPayment = paymentRepository.findById(pay_id);
+    public Payment updatePaymentInfo(int pay_id, int DocID, String date, int accNum, int chargerNum, int custID) throws CustomException {
+        Optional<Payment> selectedPayment = Optional.ofNullable(paymentRepository.findById(pay_id))
+                .orElseThrow(()-> new CustomException(DATA_NOT_FOUND));
 
         Payment updatePayment;
-        if(selectedPayment.isPresent()) {
             Payment payment = selectedPayment.get();
 
             payment.setDocID(DocID);
@@ -47,22 +54,24 @@ public class PaymentDaoImpl implements PaymentDao {
             payment.setChargerNum(chargerNum);
             payment.setCustID(custID);
 
-            updatePayment = paymentRepository.save(payment);
-        }else {
-            throw new Exception();
-        }
+            updatePayment = Optional.of(paymentRepository.save(payment))
+                    .orElseThrow(()-> new CustomException(COULD_NOT_UPDATE));
+
          return updatePayment;
     }
 
     @Override
-    public void deletePayment(int pay_id) throws Exception {
-    Optional<Payment> selectedPayment = paymentRepository.findById(pay_id);
+    public void deletePayment(int pay_id) throws CustomException{
+    Optional<Payment> selectedPayment = Optional.ofNullable(paymentRepository.findById(pay_id))
+            .orElseThrow(()-> new CustomException(DATA_NOT_FOUND));
 
-    if(selectedPayment.isPresent()){
         Payment payment = selectedPayment.get();
-        paymentRepository.delete(payment);
-    } else {
-        throw new Exception();
-    }
+        try {
+            paymentRepository.delete(payment);
+        } catch (CustomException e){
+            e = new CustomException(COULD_NOT_DELETE);
+        }
+
+
     }
 }

@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import static com.mju.IdolIns.exception.ErrorCode.MEMBER_NOT_FOUND;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

@@ -1,11 +1,12 @@
 package com.mju.IdolIns.data.dao;
 
 import com.mju.IdolIns.data.entity.Insurance;
+import com.mju.IdolIns.exception.CustomException;
 
 public interface InsuranceDao {
-    Insurance insertInsurance(Insurance insurance);
-    Insurance selectInsurance(int insId);
-    Insurance updateInsuranceName(int insId, String insName) throws Exception;
-    void deleteInsurance(int insId) throws Exception;
-    Insurance updateInsurancePermission(int insId, int permission) throws Exception;
+    Insurance insertInsurance(Insurance insurance) throws CustomException;
+    Insurance selectInsurance(int insId) throws CustomException;
+    Insurance updateInsuranceName(int insId, String insName) throws CustomException;
+    void deleteInsurance(int insId) throws CustomException;
+    Insurance updateInsurancePermission(int insId, int permission) throws CustomException;
 }
