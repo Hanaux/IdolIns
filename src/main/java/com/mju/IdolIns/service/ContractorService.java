@@ -1,9 +1,7 @@
 package com.mju.IdolIns.service;
 
-import com.mju.IdolIns.data.dto.Contractordto.ContractorDto;
-import com.mju.IdolIns.data.dto.Contractordto.ContractorResponseDto;
-
-import java.util.List;
+import com.mju.IdolIns.data.dto.contractordto.ContractorDto;
+import com.mju.IdolIns.data.dto.contractordto.ContractorResponseDto;
 
 public interface ContractorService {
     ContractorResponseDto getContractor(int cont_ID);
